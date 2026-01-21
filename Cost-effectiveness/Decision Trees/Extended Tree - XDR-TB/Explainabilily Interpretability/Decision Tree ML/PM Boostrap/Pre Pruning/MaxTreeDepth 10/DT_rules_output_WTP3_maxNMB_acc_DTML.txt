@@ -1,0 +1,94 @@
+|--- Reside in District with Prevalence >20% <= 0.50
+|   |--- Treatment Failure <= 0.50
+|   |   |--- class: 0
+|   |--- Treatment Failure >  0.50
+|   |   |--- class: 1
+|--- Reside in District with Prevalence >20% >  0.50
+|   |--- Relapse <= 0.50
+|   |   |--- Female <= 0.50
+|   |   |   |--- TB Return from Default <= 0.50
+|   |   |   |   |--- Treatment Failure <= 0.50
+|   |   |   |   |   |--- Retired <= 0.50
+|   |   |   |   |   |   |--- Initiated Treatment Abroad <= 0.50
+|   |   |   |   |   |   |   |--- Age <= 18.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- Age >  18.50
+|   |   |   |   |   |   |   |   |--- Living_condition_missing <= 0.50
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- Living_condition_missing >  0.50
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |--- Initiated Treatment Abroad >  0.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- Retired >  0.50
+|   |   |   |   |   |   |--- Age <= 46.50
+|   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |--- Age >  46.50
+|   |   |   |   |   |   |   |--- Homeless <= 0.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- Homeless >  0.50
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |--- Treatment Failure >  0.50
+|   |   |   |   |   |--- class: 1
+|   |   |   |--- TB Return from Default >  0.50
+|   |   |   |   |--- Age <= 31.50
+|   |   |   |   |   |--- class: 0
+|   |   |   |   |--- Age >  31.50
+|   |   |   |   |   |--- Money_assistance_missing <= 0.50
+|   |   |   |   |   |   |--- Family_size <= 1.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- Family_size >  1.50
+|   |   |   |   |   |   |   |--- No Education <= 0.50
+|   |   |   |   |   |   |   |   |--- Age <= 47.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- Age >  47.50
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- No Education >  0.50
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- Money_assistance_missing >  0.50
+|   |   |   |   |   |   |--- class: 0
+|   |   |--- Female >  0.50
+|   |   |   |--- Age <= 74.50
+|   |   |   |   |--- Age <= 33.50
+|   |   |   |   |   |--- TB Return from Default <= 0.50
+|   |   |   |   |   |   |--- Higher Education <= 0.50
+|   |   |   |   |   |   |   |--- Incarceration_missing <= 0.50
+|   |   |   |   |   |   |   |   |--- Age <= 32.50
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- Age >  32.50
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- Incarceration_missing >  0.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- Higher Education >  0.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- TB Return from Default >  0.50
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- Age >  33.50
+|   |   |   |   |   |--- Microscopy_missing <= 0.50
+|   |   |   |   |   |   |--- Retired <= 0.50
+|   |   |   |   |   |   |   |--- Age <= 52.50
+|   |   |   |   |   |   |   |   |--- Urban Area <= 0.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- Urban Area >  0.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- Age >  52.50
+|   |   |   |   |   |   |   |   |--- Treatment Failure <= 0.50
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- Treatment Failure >  0.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- Retired >  0.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- Microscopy_missing >  0.50
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |--- Age >  74.50
+|   |   |   |   |--- class: 0
+|   |--- Relapse >  0.50
+|   |   |--- No Education <= 0.50
+|   |   |   |--- Resided outside of Moldova <= 0.50
+|   |   |   |   |--- class: 0
+|   |   |   |--- Resided outside of Moldova >  0.50
+|   |   |   |   |--- Living_condition_missing <= 0.50
+|   |   |   |   |   |--- class: 0
+|   |   |   |   |--- Living_condition_missing >  0.50
+|   |   |   |   |   |--- class: 1
+|   |   |--- No Education >  0.50
+|   |   |   |--- class: 1

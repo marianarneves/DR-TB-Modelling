@@ -1,0 +1,16 @@
+|--- Treatment Failure <= 0.50
+|   |--- Reside in District with Prevalence >20% <= 0.50
+|   |   |--- class: 0
+|   |--- Reside in District with Prevalence >20% >  0.50
+|   |   |--- TB Return from Default <= 0.50
+|   |   |   |--- Female <= 0.50
+|   |   |   |   |--- class: 0
+|   |   |   |--- Female >  0.50
+|   |   |   |   |--- class: 0
+|   |   |--- TB Return from Default >  0.50
+|   |   |   |--- Homeless_missing <= 0.50
+|   |   |   |   |--- class: 1
+|   |   |   |--- Homeless_missing >  0.50
+|   |   |   |   |--- class: 0
+|--- Treatment Failure >  0.50
+|   |--- class: 1

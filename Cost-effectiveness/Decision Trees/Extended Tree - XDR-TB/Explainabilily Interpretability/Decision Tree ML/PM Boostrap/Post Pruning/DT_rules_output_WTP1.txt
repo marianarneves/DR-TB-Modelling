@@ -1,0 +1,43 @@
+|--- Reside in District with Prevalence >20% <= 0.50
+|   |--- Age <= 12.50
+|   |   |--- class: 1
+|   |--- Age >  12.50
+|   |   |--- class: 0
+|--- Reside in District with Prevalence >20% >  0.50
+|   |--- TB Return from Default <= 0.50
+|   |   |--- Female <= 0.50
+|   |   |   |--- Initiated Treatment Abroad <= 0.50
+|   |   |   |   |--- Student <= 0.50
+|   |   |   |   |   |--- Living_condition_missing <= 0.50
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- Living_condition_missing >  0.50
+|   |   |   |   |   |   |--- Age <= 44.00
+|   |   |   |   |   |   |   |--- Resided outside of Moldova <= 0.50
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- Resided outside of Moldova >  0.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- Age >  44.00
+|   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |--- Student >  0.50
+|   |   |   |   |   |--- class: 1
+|   |   |   |--- Initiated Treatment Abroad >  0.50
+|   |   |   |   |--- class: 1
+|   |   |--- Female >  0.50
+|   |   |   |--- Age <= 52.50
+|   |   |   |   |--- Relapse <= 0.50
+|   |   |   |   |   |--- Age <= 33.50
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- Age >  33.50
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- Relapse >  0.50
+|   |   |   |   |   |--- class: 0
+|   |   |   |--- Age >  52.50
+|   |   |   |   |--- class: 0
+|   |--- TB Return from Default >  0.50
+|   |   |--- Age <= 45.00
+|   |   |   |--- Homeless_missing <= 0.50
+|   |   |   |   |--- class: 1
+|   |   |   |--- Homeless_missing >  0.50
+|   |   |   |   |--- class: 0
+|   |   |--- Age >  45.00
+|   |   |   |--- class: 0

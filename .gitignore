@@ -1,0 +1,22 @@
+# R / RStudio
+.Rhistory
+.RData
+.Rproj.user/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Large data
+*.csv
+*.xlsx
+*.rds
+*.RData
+
+# Plots / figures
+*.png
+*.pdf
+
+.DS_Store
+.venv/

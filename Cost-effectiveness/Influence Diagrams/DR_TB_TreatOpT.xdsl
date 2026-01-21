@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network2" numsamples="10000" discsamples="10000">
+	<nodes>
+		<decision id="Tretament">
+			<state id="FLQ" />
+			<state id="DLM" />
+		</decision>
+		<cpt id="Side_effects">
+			<state id="Positive" />
+			<state id="Negative" />
+			<parents>Tretament</parents>
+			<probabilities>0.3 0.7 0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Actual_Resistance">
+			<state id="Positive" />
+			<state id="Negative" />
+			<probabilities>0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Predicted_Resistance">
+			<state id="Positive" />
+			<state id="Negative" />
+			<parents>Actual_Resistance</parents>
+			<probabilities>0.9 0.1 0.15 0.85</probabilities>
+		</cpt>
+		<cpt id="Correct_Treatment">
+			<state id="Positive" />
+			<state id="Negative" />
+			<parents>Tretament Actual_Resistance</parents>
+			<probabilities>0 1 1 0 1 0 0 1</probabilities>
+		</cpt>
+		<cpt id="Long_term_DR">
+			<state id="Positive" />
+			<state id="Negative" />
+			<parents>Tretament Correct_Treatment</parents>
+			<probabilities>0.05 0.95 0.1 0.9 0.05 0.95 0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Reinfection">
+			<state id="Positive" />
+			<state id="Negative" />
+			<parents>Correct_Treatment Tretament</parents>
+			<probabilities>0.07000000000000001 0.93 0.1 0.9 0.7 0.3 0.9 0.1</probabilities>
+		</cpt>
+		<utility id="Side_Effects_Cost">
+			<parents>Side_effects Tretament</parents>
+			<utilities>500 300 0 0</utilities>
+		</utility>
+		<utility id="Drug_Cost">
+			<parents>Tretament</parents>
+			<utilities>100 70</utilities>
+		</utility>
+		<utility id="Long_Term_DR_Cost">
+			<parents>Long_term_DR Tretament</parents>
+			<utilities>500 300 0 0</utilities>
+		</utility>
+		<utility id="Reinfection_Cost">
+			<parents>Reinfection Tretament</parents>
+			<utilities>1000 7000 0 0</utilities>
+		</utility>
+		<mau id="Healthcare_costs">
+			<parents>Side_Effects_Cost Drug_Cost Long_Term_DR_Cost Reinfection_Cost</parents>
+			<weights>1 1 1 1</weights>
+		</mau>
+		<utility id="Patient_SideEffects_Cost">
+			<parents>Side_effects Tretament</parents>
+			<utilities>500 200 0 0</utilities>
+		</utility>
+		<utility id="Patient_LongDR_Cost">
+			<parents>Long_term_DR</parents>
+			<utilities>100 0</utilities>
+		</utility>
+		<utility id="Patient_Reinfection_Cost">
+			<parents>Reinfection</parents>
+			<utilities>1000 0</utilities>
+		</utility>
+		<utility id="Patient_Treatment_Cost">
+			<parents>Correct_Treatment</parents>
+			<utilities>0 600</utilities>
+		</utility>
+		<mau id="Health_Outcome">
+			<parents>Patient_SideEffects_Cost Patient_LongDR_Cost Patient_Reinfection_Cost Patient_Treatment_Cost</parents>
+			<weights>1 1 1 1</weights>
+		</mau>
+		<mau id="Utility">
+			<parents>Healthcare_costs Health_Outcome</parents>
+			<weights>0.4 0.6</weights>
+		</mau>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.1.3724.0 ACADEMIC" name="Network2">
+			<node id="Tretament">
+				<name>Treatment</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>116 15 358 131</position>
+				<barchart active="true" />
+			</node>
+			<node id="Side_effects">
+				<name>Side effects</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>336 183 439 287</position>
+			</node>
+			<node id="Long_term_DR">
+				<name>Long term DR</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>464 186 567 290</position>
+			</node>
+			<node id="Utility">
+				<name>Utility</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>688 650 914 768</position>
+			</node>
+			<node id="Correct_Treatment">
+				<name>Correct Treatment</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>750 149 853 253</position>
+			</node>
+			<node id="Healthcare_costs">
+				<name>Helathcare costs</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>112 649 338 767</position>
+			</node>
+			<node id="Health_Outcome">
+				<name>Health Outcome</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>692 478 918 596</position>
+			</node>
+			<node id="Reinfection">
+				<name>Reinfection</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>585 185 688 289</position>
+			</node>
+			<node id="Predicted_Resistance">
+				<name>Predicted Resistance</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>649 17 752 121</position>
+				<barchart active="true" />
+			</node>
+			<node id="Actual_Resistance">
+				<name>Actual Resistance</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>826 17 929 121</position>
+				<barchart active="true" />
+			</node>
+			<node id="Side_Effects_Cost">
+				<name>Side Effects Cost</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>12 441 125 519</position>
+			</node>
+			<node id="Drug_Cost">
+				<name>Drug Cost</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>129 435 242 513</position>
+			</node>
+			<node id="Long_Term_DR_Cost">
+				<name>Long Term DR Cost</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>251 434 364 512</position>
+			</node>
+			<node id="Reinfection_Cost">
+				<name>Reinfection Cost</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>369 434 482 512</position>
+			</node>
+			<node id="Patient_Treatment_Cost">
+				<name>Patient Treatment Cost</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>883 343 996 421</position>
+			</node>
+			<node id="Patient_Reinfection_Cost">
+				<name>Patient Reinfection Cost</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>762 340 875 418</position>
+			</node>
+			<node id="Patient_LongDR_Cost">
+				<name>Patient LongDR Cost</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>645 340 758 418</position>
+			</node>
+			<node id="Patient_SideEffects_Cost">
+				<name>Patient SideEffects Cost</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>523 342 636 420</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

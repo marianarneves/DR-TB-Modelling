@@ -1,0 +1,25 @@
+|--- Reside in District with Prevalence >20% <= 0.50
+|   |--- Treatment Failure <= 0.50
+|   |   |--- class: 0
+|   |--- Treatment Failure >  0.50
+|   |   |--- class: 1
+|--- Reside in District with Prevalence >20% >  0.50
+|   |--- Retired <= 0.50
+|   |   |--- TB Return from Default <= 0.50
+|   |   |   |--- Treatment Failure <= 0.50
+|   |   |   |   |--- class: 0
+|   |   |   |--- Treatment Failure >  0.50
+|   |   |   |   |--- class: 1
+|   |   |--- TB Return from Default >  0.50
+|   |   |   |--- Homeless_missing <= 0.50
+|   |   |   |   |--- class: 1
+|   |   |   |--- Homeless_missing >  0.50
+|   |   |   |   |--- class: 0
+|   |--- Retired >  0.50
+|   |   |--- Relapse <= 0.50
+|   |   |   |--- Age <= 46.50
+|   |   |   |   |--- class: 0
+|   |   |   |--- Age >  46.50
+|   |   |   |   |--- class: 1
+|   |   |--- Relapse >  0.50
+|   |   |   |--- class: 0

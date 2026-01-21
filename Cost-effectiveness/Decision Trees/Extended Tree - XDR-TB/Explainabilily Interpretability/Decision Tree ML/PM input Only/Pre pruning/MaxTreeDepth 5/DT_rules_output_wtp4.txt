@@ -1,0 +1,25 @@
+|--- Prevalence: Reside in District with Prevalence >20% <= 0.50
+|   |--- TB Type: Treatment failure <= 0.50
+|   |   |--- Age <= 12.50
+|   |   |   |--- class: 1
+|   |   |--- Age >  12.50
+|   |   |   |--- class: 0
+|   |--- TB Type: Treatment failure >  0.50
+|   |   |--- class: 1
+|--- Prevalence: Reside in District with Prevalence >20% >  0.50
+|   |--- TB Type: Relapse <= 0.50
+|   |   |--- Sex: Female <= 0.50
+|   |   |   |--- TB Type: Return from default <= 0.50
+|   |   |   |   |--- class: 0
+|   |   |   |--- TB Type: Return from default >  0.50
+|   |   |   |   |--- class: 1
+|   |   |--- Sex: Female >  0.50
+|   |   |   |--- Family size <= 5.50
+|   |   |   |   |--- class: 1
+|   |   |   |--- Family size >  5.50
+|   |   |   |   |--- class: 0
+|   |--- TB Type: Relapse >  0.50
+|   |   |--- Education: No Education <= 0.50
+|   |   |   |--- class: 0
+|   |   |--- Education: No Education >  0.50
+|   |   |   |--- class: 1

@@ -1,0 +1,28 @@
+|--- Reside in District with Prevalence >20% <= 0.50
+|   |--- Treatment Failure <= 0.50
+|   |   |--- Age <= 12.50
+|   |   |   |--- class: 1
+|   |   |--- Age >  12.50
+|   |   |   |--- class: 0
+|   |--- Treatment Failure >  0.50
+|   |   |--- class: 1
+|--- Reside in District with Prevalence >20% >  0.50
+|   |--- Relapse <= 0.50
+|   |   |--- Retired <= 0.50
+|   |   |   |--- TB Return from Default <= 0.50
+|   |   |   |   |--- class: 0
+|   |   |   |--- TB Return from Default >  0.50
+|   |   |   |   |--- class: 1
+|   |   |--- Retired >  0.50
+|   |   |   |--- Age <= 81.00
+|   |   |   |   |--- class: 1
+|   |   |   |--- Age >  81.00
+|   |   |   |   |--- class: 0
+|   |--- Relapse >  0.50
+|   |   |--- No Education <= 0.50
+|   |   |   |--- Resided outside of Moldova <= 0.50
+|   |   |   |   |--- class: 0
+|   |   |   |--- Resided outside of Moldova >  0.50
+|   |   |   |   |--- class: 0
+|   |   |--- No Education >  0.50
+|   |   |   |--- class: 1

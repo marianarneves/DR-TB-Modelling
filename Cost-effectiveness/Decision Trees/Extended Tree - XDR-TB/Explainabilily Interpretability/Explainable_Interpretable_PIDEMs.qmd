@@ -1,0 +1,565 @@
+---
+title: "Exploring explainability and interpretability in PIDEM methods"
+format:
+  html:
+    embed-resources: true
+    self-contained: true
+editor: visual
+execute: 
+  echo: true
+  warning: false
+  message: false
+---
+
+# Training DT on PIDEMc output
+
+```{r data-reading}
+#| echo: false
+#| results: "hide"
+#| message: false
+#| warning: false
+
+source('/Users/mariananeves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/Analysis/Data_Read_wrangling.R')
+```
+
+## Accuracy of the Decision Tree trained on PIDEMc output
+
+The figure shows the accuracy of a decision tree trained on PIDEMc outputs as a function of the classification threshold.
+
+```{r DTversusPIDEMc_correct}
+#| echo: false
+#| results: "hide"
+#| message: false
+#| warning: false
+
+
+ggplot(PMDT_DTML_acc, aes(x = Threshold, y = accuracy)) +
+  geom_line(color = "red", size = 1) +   # line plot
+  geom_point(color = "darkred", size = 2) +    # optional points
+  labs(
+    title = "Accuracy of DTML by Threshold",
+    x = "Threshold",
+    y = "Accuracy"
+  ) +
+  theme_minimal(base_size = 14)
+
+```
+
+The graph below shows the average change in NMB and corresponding 95% confidence intervals for decision trees trained on PIDEMc outputs, relative to the standard treatment.
+
+```{r Plot-DTtrainPIDEMc}
+#| echo: false
+#| results: "hide"
+#| message: false
+#| warning: false
+
+ggplot(NMB_by_method, aes(x = Threshold, y = NMB, color = Method, fill = Method)) +
+  geom_line(size = 1) +
+  geom_ribbon(aes(ymin = lciNMB, ymax = uciNMB), alpha = 0.2, color = NA) +
+  labs(x = "Classification threshold", y = "Change in NMB") +
+  theme_minimal(base_size = 16) +
+  scale_color_manual(values = c("DTML" = "#377eb8", "PIDEMc" = "#e41a1c")) +
+  scale_fill_manual(values = c("DTML" = "#377eb8", "PIDEMc" = "#e41a1c")) +
+  theme(legend.position = "top")
+
+
+```
+
+The graph below shows the average difference in NMB between the PIDEMc method and the decision tree, calculated as the PIDEMc NMB minus the decision tree NMB, each relative to the standard treatment.
+
+```{r Plot-DTversusPIDEMc_subtraction}
+#| echo: false
+#| results: "hide"
+#| message: false
+#| warning: false
+
+
+ggplot(PMDT_DTML_nmb, aes(x = Threshold, y = NMB_PMDT_DTML)) +
+  geom_line(size = 1.2, color = "#1f78b4") +
+  geom_hline(yintercept = 0, linetype = "dotted", color = "black") +
+  labs(x = "Classification threshold", y = "Change in NMB (PIDEMc − DT)") +
+  theme_minimal(base_size = 16)
+```
+
+## Decision Tree trained on PIDEMc output
+
+The first graph presents the decision tree trained on the PIDEMc outputs, using the classification threshold that maximizes the NMB.
+
+```{r Interactive-DT}
+#| echo: false
+#| results: "asis"
+#| message: false
+#| warning: false
+
+source('/Users/mariananeves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/Analysis/Rules_to_interactiveDT.R', echo = FALSE, print.eval = FALSE)
+
+# File path
+DTML_maxPIDEMc_NMB <- '/Users/mariananeves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/PM Boostrap/Pre pruning/DT_rules_output_WTP2.txt'
+
+#Plot interactive collapsible tree
+DT_maxPIDEMc_NMB_tree = collapsibletree_fromrules(DTML_maxPIDEMc_NMB)
+DT_maxPIDEMc_NMB_tree
+
+```
+
+This graph presents the decision tree trained on the PIDEMc outputs, at the threshold that maximizes NMB and replicates the PIDEMc method with at least 95% accuracy.
+
+```{r Interactive-DT-acc95}
+#| echo: false
+#| results: "asis"
+#| message: false
+#| warning: false
+
+# File path: replace with your actual file path
+DTML_maxPIDEMc_NMB_95acc <- '/Users/mariananeves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/PM Boostrap/Pre pruning/DT_rules_output_WTP2_maxNMB_acc_DTML.txt'
+
+#Plot interactive collapsible tree
+DTML_maxPIDEMc_NMB_95acc_tree = collapsibletree_fromrules(DTML_maxPIDEMc_NMB_95acc)
+DTML_maxPIDEMc_NMB_95acc_tree
+```
+
+```{r data-wrangling}
+#| echo: false
+#| results: "hide"
+#| message: false
+#| warning: false
+
+library(pre)        # RuleFit implementation
+library(dplyr)      # Data wrangling
+library(ggplot2)    # Plotting
+library(DT)         # Interactive tables
+library(partykit)   # Needed for ctree_control
+library(pROC)
+library(readxl)
+library(tidyr)
+
+# Load classification results
+
+Classification_PMDT <- read.csv(
+  '/Users/mariananeves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/PM Boostrap/Input/test/moldova_data_opt_treat_classification_allthresholds_wtp2.csv'
+)
+
+# Filter threshold range
+
+Classification_PMDT_maxNMB <- Classification_PMDT %>%
+  filter(Threshold > 0.328 & Threshold < 0.330) %>%
+  mutate(Opt_Treat_n = ifelse(Opt_Treat =='FLQ', 0, 1))
+
+# Select predictors + outcome
+
+df <- Classification_PMDT_maxNMB %>%
+  select(-c(Threshold, Person, Pt_id, FLQ_R, n, Residence, Opt_Treat))
+
+df$Opt_Treat_n <- factor(df$Opt_Treat_n)
+
+# Tree control - We fit a RuleFit model using pre, with shallow trees (maxdepth = 3) to encourage simple and interpretable rules.
+ctrl <- ctree_control(maxdepth = 3, minsplit = 1, minbucket = 1)
+
+set.seed(123)
+fit_rulefit <- pre(
+  Opt_Treat_n ~ ., 
+  data = df,
+  family = "binomial",
+  tree.control = ctrl
+)
+```
+
+# RuleFit method
+
+## Introduction
+
+In this report, we investigate the use of the RuleFit algorithm to predict the optimal treatment (\`Opt_Treat\`) for drug-resistant tuberculosis (DR-TB) patients in Moldova.
+
+RuleFit combines linear terms with if–then rules extracted from decision trees, producing interpretable yet flexible models. The goal is to understand which features and rules drive treatment predictions both globally (across the dataset) and locally (for individual patients).
+
+Reference: Friedman, J. H., and Popescu, B. E. (2008). "Predictive learning via rule ensembles." *The Annals of Applied Statistics*, 2(3), 916-954
+
+------------------------------------------------------------------------
+
+## Results
+
+### Variable Importance
+
+```{r variable-importance}
+#| echo: false
+#| results: "hide"
+#| message: false
+#| warning: false
+#| fig.show: "hide"
+
+imp_raw <- importance(fit_rulefit)
+```
+
+Variable importance quantifies how much each predictor contributes to the model. Below we show the Table with the relative importance of each variable.
+
+```{r table-variableimportance}
+#| echo: false
+#| message: false
+#| warning: false
+
+varimp_df <- data.frame(
+  var = imp_raw$varimps$varname,
+  rel.importance = round(imp_raw$varimps$imp,4),
+  stringsAsFactors = FALSE
+) %>%
+  arrange(desc(rel.importance))
+
+datatable(varimp_df, options = list(pageLength = 10), colnames = c("Variable Name", "Relative Importance"))
+```
+
+The graph below shows the relative importance of each variable.
+
+```{r plot-variableimportance}
+#| echo: false
+#| results: "hide"
+#| message: false
+#| warning: false
+
+ymax <- ceiling(max(varimp_df$rel.importance) / 0.25) * 0.25
+
+ggplot(head(varimp_df, 25), aes(x = reorder(var, rel.importance), y = rel.importance)) +
+  geom_col(fill = "steelblue") +
+  coord_flip() +
+  labs(x = "Variable", y = "Relative Importance", title = "Top 25 Variables (RuleFit)") +
+  scale_y_continuous(breaks = seq(0, ymax, by = 0.25),
+    limits = c(0, ymax)) +
+  theme_minimal()
+```
+
+### Rule Importance
+
+Here we examine the rules extracted from decision trees and retained in the ensemble.
+
+```{r table-ruleimportance}
+#| echo: false
+#| message: false
+#| warning: false
+
+ruleimp_df <- data.frame(
+  rule = imp_raw$baseimps$description,
+  rel.importance = round(imp_raw$baseimps$imp,4),
+  stringsAsFactors = FALSE
+) %>%
+  arrange(desc(rel.importance))
+
+datatable(ruleimp_df, options = list(pageLength = 10), colnames = c("Rule", "Relative Importance"))
+```
+
+The graph below shows the relative importance of each rule.
+
+```{r plot-ruleimportance}
+#| echo: false
+#| results: "hide"
+#| message: false
+#| warning: false
+
+ymax <- ceiling(max(ruleimp_df$rel.importance) / 0.25) * 0.25
+
+ggplot(head(ruleimp_df, 25), aes(x = reorder(rule, rel.importance), y = rel.importance)) +
+  geom_col(fill = "darkorange") +
+  coord_flip() +
+  labs(x = "Rule", y = "Relative Importance", title = "Top 25 Rules (RuleFit)") +
+  scale_y_continuous(breaks = seq(0, ymax, by = 0.25),
+  limits = c(0, ymax)) +
+  theme_minimal()
+```
+
+### Coefficients
+
+Coefficients indicate the direction (positive pushes toward treatment = CFZ, negative pushes toward FQ) and strength of each rule or linear term.
+
+```{r table-coefficients}
+#| echo: false
+#| message: false
+#| warning: false
+
+# Extract coefficients at the lambda chosen by the model (usually "lambda.min" or "lambda.1se")
+coefs <- coef(fit_rulefit$glmnet.fit, s = "lambda.min")
+
+# Convert to a data frame
+coef_df <- data.frame(
+  Feature = rownames(coefs),
+  Coefficient = round(as.numeric(coefs), 4),
+  row.names = NULL)%>%
+  filter(!is.na(Coefficient) & Coefficient != 0)
+
+datatable(coef_df, options = list(pageLength = 10))
+```
+
+### ROC Analysis of RuleFit Trained on PIDEM Outcomes
+
+The graph below displays the ROC curve for the RuleFit model, trained and tested using PIDEMc outcomes.
+
+```{r table-predictions}
+#| echo: false
+#| message: false
+#| warning: false
+
+# Your existing predictions
+pred_probs <- predict(fit_rulefit, newdata = df, type = "response")
+
+# ----------------------------
+# ROC calculation
+# ----------------------------
+
+# Compute ROC object
+roc_obj <- roc(df$Opt_Treat_n , pred_probs)
+
+# Print AUC
+auc_value <- auc(roc_obj)
+
+# Optional: ggplot2 version
+roc_df <- data.frame(
+  tpr = rev(roc_obj$sensitivities),
+  fpr = rev(1 - roc_obj$specificities)
+)
+
+ggplot(roc_df, aes(x = fpr, y = tpr)) +
+  geom_line(color = "blue", size = 1.2) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "gray") +
+  labs(x = "1- Specificity", y = "Sensistivity", title = paste("ROC Curve - RuleFit Model (AUC =", round(auc_value, 3), ")")) +
+  theme_minimal()
+
+```
+
+The table below reports sensitivity, specificity, and accuracy at the threshold corresponding to the maximum Youden’s index.
+
+```{r table-ROC_accuracy}
+#| echo: false
+#| message: false
+#| warning: false
+
+best_coords <- coords(
+  roc_obj,
+  "best",
+  ret = c("threshold", "sensitivity", "specificity", "accuracy"),
+  best.method = "youden"
+)
+
+best_coords_df <- tibble::tibble(
+  Metric = c("Threshold", "Sensitivity", "Specificity", "Accuracy"),
+  Value  = round(as.numeric(best_coords), 3)
+)
+
+knitr::kable(best_coords_df, caption = "Best threshold (Youden’s J) and performance metrics")
+```
+
+### Accuracy - RulesFit tested on PIDEMc outcomes
+
+The graph below displays the accuracy of the RuleFit model in predicting PIDEMc outcomes across different classification thresholds.
+
+```{r Accuracy-by-threshold}
+#| echo: false
+#| message: false
+#| warning: false
+#| 
+daly_patient = read_excel(
+  '/Users/mariananeves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/Daly Cost Analysis/Input_V10/DalyResults_patient.xlsx')
+
+# Classification model results (PMDT outputs)
+Classification_PMDT_orig_max <- read_xlsx('/Users/mariananeves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/Input_V10/PMDT_wtp2bootstrapping_samplesize200.xlsx') %>%
+  filter(Threshold > 0.328 & Threshold < 0.330)
+
+compute_avg_nmb <- function(df) {
+  df %>%
+    group_by(Threshold) %>%
+    summarise(
+      NMB = mean(NMB_SdTreat_DM),
+      uciNMB = NMB + qt(0.975, df = length(NMB_SdTreat_DM) - 1) * sd(NMB_SdTreat_DM) / sqrt(length(NMB_SdTreat_DM)),
+      lciNMB = NMB - qt(0.975, df = length(NMB_SdTreat_DM) - 1) * sd(NMB_SdTreat_DM) / sqrt(length(NMB_SdTreat_DM))
+    ) 
+}
+
+class_threshold = seq(0,1,0.01)
+# Person–prediction pairs
+pred_df <- tibble(
+  Person = seq_len(length(pred_probs)),
+  pred_prob = pred_probs
+)
+
+# Expand across thresholds
+NMB_RuleFit <- expand_grid(
+  Threshold = class_threshold
+) %>%
+  crossing(pred_df) %>%  # replicate each Person–pred_prob across thresholds
+  left_join(
+    daly_patient %>% select(Person, SdTreat_NMB, FLQ_NMB, DLM_NMB),
+    by = "Person"
+  ) %>%
+  mutate(
+    Opt_Treat = ifelse(pred_prob > Threshold, 1, 0),
+    NMB_SdTreat_DM = ifelse(
+      Opt_Treat == 0,
+      SdTreat_NMB - FLQ_NMB,
+      SdTreat_NMB - DLM_NMB
+    )
+  )
+
+NMB_RuleFit_avg = compute_avg_nmb(NMB_RuleFit) 
+
+PMDT_nmb_avg <- compute_avg_nmb(Classification_PMDT_orig_max) 
+
+PMDT_RuleFit_acc <- NMB_RuleFit %>%
+  rename_with(~ paste0(., "_RuleFit"), -c(Person)) %>%   # keep keys clean
+  left_join(
+    Classification_PMDT_orig_max %>%
+      mutate(Person1 = Person + 1) %>%
+      rename_with(~ paste0(., "_PMDT"), -c(Person, Person1)),
+    by = c("Person" = "Person1")
+  ) %>%
+  mutate(
+    NMB_PMDT_correct = case_when(
+      Opt_Treat_RuleFit == 0 & Opt_Treat_PMDT == "FLQ" ~ 1,
+      Opt_Treat_RuleFit == 1 & Opt_Treat_PMDT == "DLM" ~ 1,
+      TRUE ~ 0
+    )
+  ) %>%
+  group_by(Threshold_RuleFit) %>%
+  summarise(accuracy = mean(NMB_PMDT_correct),
+            NMB = mean(NMB_SdTreat_DM_RuleFit)
+            )
+
+ggplot(PMDT_RuleFit_acc, aes(x = Threshold_RuleFit, y = accuracy)) +
+  geom_line(color = "red", size = 1) +   # line plot
+  geom_point(color = "darkred", size = 1) +    # optional points
+  labs(
+    title = "Accuracy of RuleFit by Threshold",
+    x = "Threshold",
+    y = "Accuracy"
+  ) +
+  scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, by = 0.1)) +
+  theme_minimal(base_size = 14)
+
+```
+
+### NMB - PIDEMs - RulesFit (when compared to standard treatment)
+
+The graph below shows the average NMB per patient for the RuleFit model compared with standard treatment. The red line represents the average NMB obtained when PIDEMc is applied, indicating its optimal NMB relative to standard treatment
+
+```{r NMB-PIDEMc-RuleFit}
+#| echo: false
+#| message: false
+#| warning: false
+ 
+# Combine the sources into one long-form data structure for legend control
+NMB_RuleFit_avg$Method <- "RuleFit"
+PMDT_nmb_avg$Method <- "PIDEMc"
+
+ggplot() +
+  # RuleFit curve + CI
+  geom_line(data = NMB_RuleFit_avg,
+            aes(x = Threshold, y = NMB, color = Method), size = 1) +
+  geom_ribbon(data = NMB_RuleFit_avg,
+              aes(x = Threshold, ymin = lciNMB, ymax = uciNMB, fill = Method),
+              alpha = 0.2) +
+
+  # PIDEMc horizontal line + CI
+  geom_hline(data = PMDT_nmb_avg,
+             aes(yintercept = NMB, color = Method), size = 1) +
+  geom_rect(data = PMDT_nmb_avg,
+            aes(xmin = -Inf, xmax = Inf, ymin = lciNMB, ymax = uciNMB, fill = Method),
+            alpha = 0.2, inherit.aes = FALSE) +
+
+  scale_color_manual(values = c("RuleFit" = "#377eb8", "PIDEMc" = "red")) +
+  scale_fill_manual(values  = c("RuleFit" = "#377eb8", "PIDEMc" = "red")) +
+  scale_y_continuous(breaks = seq(-500, 1500, by = 250), limits = c(-500, 1500)) 
+  labs(x = "Classification threshold",
+       y = "Change in NMB",
+       color = "Method",
+       fill = "Method") +
+  theme_minimal(base_size = 16) +
+  theme(legend.position = "top")
+
+
+```
+
+### Individual Patient Explanation
+
+For a given patient, we can examine the contribution of each activated rule and variable to the prediction.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+source('/Users/mariananeves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/RuleFit/Calculate_Feature_Contribution.R')
+
+# fit_rulefit stores this internally as X
+X_all <- fit_rulefit$modmat   # n x p matrix of training data (rules + linear terms)
+
+# For a single patient, extract corresponding row from X_all
+# Here we match by row number, e.g., patient 1
+x_patient <- X_all[1, , drop = FALSE]
+
+patient_fit = compute_contributions(x_patient, coef_df)
+
+feature_contribution = patient_fit$contrib_df
+
+ggplot(feature_contribution, aes(x = reorder(Feature, Contribution), y = Contribution, fill = Contribution > 0)) +
+  geom_col() +
+  coord_flip() +
+  labs(
+    title = "Feature contributions",
+    x = "Feature / Rule",
+    y = "Contribution (logit)"
+  ) +
+  scale_fill_manual(values = c("TRUE" = "steelblue", "FALSE" = "tomato"), guide = "none") +
+  theme_minimal()
+
+```
+
+The predicted probability for this patient is `r round(patient_fit$predicted_prob, 3)`.
+
+# PIDEMS and explainability methods
+
+LIME and SHAP are not meaningful for models that only output hard class labels, because both methods rely on observing how the model’s output changes when the input is perturbed. If the model only returns 0/1 labels, small changes in the input usually do not alter the prediction, leaving nothing for these methods to approximate. Hard labels also discard valuable information about the model’s confidence: a prediction made with 99% certainty looks the same as one made with 51% certainty when only the final class is shown. As a result, the surrogate models that LIME and SHAP build cannot capture meaningful feature contributions, and the resulting explanations are unstable or misleading. In practice, these explanation methods are useful only when the model provides continuous outputs, such as probabilities or decision scores, rather than just discrete classes, because that continuous signal is what allows them to explain how features influence predictions.
+
+# References
+
+### 1. Foundational / Conceptual Papers
+
+-   Doshi-Velez, F., & Kim, B. (2017). *Towards a rigorous science of interpretable machine learning.* [arXiv:1702.08608](https://arxiv.org/abs/1702.08608)
+
+-   Lipton, Z. C. (2016). *The mythos of model interpretability.* [arXiv:1606.03490](https://arxiv.org/abs/1606.03490)
+
+-   Ribeiro, M. T., Singh, S., & Guestrin, C. (2016). *“Why should I trust you?” Explaining the predictions of any classifier.* [KDD 2016](https://dl.acm.org/doi/10.1145/2939672.2939778)
+
+-   Gilpin, L. H., Bau, D., Yuan, B. Z., Bajwa, A., Specter, M., & Kagal, L. (2018). Explaining explanations: An overview of interpretability of machine learning. arXiv:1806.00069
+
+-   Rawal, K., Fu, Z., Delaney, E., & Russell, C. (2025). Evaluating model explanations without ground truth. arXiv:2505.10399
+
+### 2. Model-Agnostic Explainability Methods
+
+-   Lundberg, S. M., & Lee, S.-I. (2017). *A unified approach to interpreting model predictions.* [NIPS 2017](https://arxiv.org/abs/1705.07874)
+
+-   Molnar, C. (2022). *Interpretable Machine Learning.* [Online Book](https://christophm.github.io/interpretable-ml-book/)
+
+-   Guidotti, R., Monreale, A., Ruggieri, S., Turini, F., Giannotti, F., & Pedreschi, D. (2018). *A survey of methods for explaining black box models.* [ACM Computing Surveys, 51(5), 1–42](https://dl.acm.org/doi/10.1145/3236009)
+
+### 3. Interpretable Models
+
+-   Rudin, C. (2019). *Stop explaining black box machine learning models for high-stakes decisions and use interpretable models instead.* [Nature Machine Intelligence, 1(5), 206–215](https://www.nature.com/articles/s42256-019-0048-x)
+
+-   Tibshirani, R. (1996). *Regression shrinkage and selection via the lasso.* [Journal of the Royal Statistical Society, Series B, 58(1), 267–288](https://www.jstor.org/stable/2346178)
+
+-   Friedman, J., Hastie, T., & Tibshirani, R. (2001). *The Elements of Statistical Learning.* Springer.
+
+### 4. Visualization & Feature Importance
+
+-   Caruana, R., Lou, Y., Gehrke, J., Koch, P., Sturm, M., & Elhadad, N. (2015). *Intelligible models for healthcare: Predicting pneumonia risk and hospital 30-day readmission.* [KDD 2015](https://dl.acm.org/doi/10.1145/2783258.2788613)
+
+-   Staniak, M., & Biecek, P. (2018). *Explanations of model predictions with live and DALEX.* [arXiv:1802.09847](https://arxiv.org/abs/1802.09847)
+
+### 5. Advanced & Recent Directions
+
+-   Janzing, D., & Schölkopf, B. (2020). *Feature relevance quantification in explainable AI: A causal perspective.* [arXiv:2003.01211](https://arxiv.org/abs/2003.01211)
+
+-   Apley, D. W., & Zhu, J. (2020). *Visualizing the effects of predictor variables in black box supervised learning models.* [Journal of the Royal Statistical Society, Series B, 82(4), 1059–1086](https://rss.onlinelibrary.wiley.com/doi/full/10.1111/rssb.12377)
+
+-   Carvalho, D. V., Pereira, E. M., & Cardoso, J. S. (2019). *Machine learning interpretability: A survey on methods and metrics.* [Electronics, 8(8), 832](https://www.mdpi.com/2079-9292/8/8/832)
+
+### 5. Criticism
+
+-   The Lancet Digital Health. (2021). *The false hope of current approaches to explainable artificial intelligence in healthcare.* [The Lancet Digital Health, 3(12), e739–e740](https://www.thelancet.com/journals/landig/article/PIIS2589-7500(21)00208-9/fulltext?tpcc=nleyeonai)
+
+-   Balagopalan, A., & Kasy, M. (2022). *The road to explainability is paved with bias.* [Proceedings of the 2022 ACM Conference on Fairness, Accountability, and Transparency (FAccT '22), 1194–1206](https://doi.org/10.1145/3531146.3533179)

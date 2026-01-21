@@ -1,0 +1,164 @@
+---
+title: "Interpretable PIDEMs"
+format: html
+editor: visual
+---
+
+```{r data-reading}
+#| echo: false
+#| results: "hide"
+#| message: false
+#| warning: false
+
+source('Data_Read_wrangling.R')
+```
+
+#### Accuracy of the Decision Tree trained on PIDEMc output
+
+The figure shows the accuracy of a decision tree trained on PIDEMc outputs as a function of the classification threshold.
+
+```{r DTversusPIDEMc_correct}
+#| echo: false
+#| results: "hide"
+#| message: false
+#| warning: false
+
+
+ggplot(PMDT_DTML_acc, aes(x = Threshold, y = accuracy)) +
+  geom_line(color = "red", size = 1) +   # line plot
+  geom_point(color = "darkred", size = 2) +    # optional points
+  labs(
+    title = "Accuracy of DTML by Threshold",
+    x = "Threshold",
+    y = "Accuracy"
+  ) +
+  theme_minimal(base_size = 14)
+
+```
+
+The graph below shows the average change in NMB and corresponding 95% confidence intervals for decision trees trained on PIDEMc outputs, relative to the standard treatment.
+
+```{r Plot-DTtrainPIDEMc}
+#| echo: false
+#| results: "hide"
+#| message: false
+#| warning: false
+
+ggplot(NMB_by_method, aes(x = Threshold, y = NMB, color = Method, fill = Method)) +
+  geom_line(size = 1) +
+  geom_ribbon(aes(ymin = lciNMB, ymax = uciNMB), alpha = 0.2, color = NA) +
+  labs(x = "Classification threshold", y = "Change in NMB") +
+  theme_minimal(base_size = 16) +
+  scale_color_manual(values = c("DTML" = "#377eb8", "PIDEMc" = "#e41a1c")) +
+  scale_fill_manual(values = c("DTML" = "#377eb8", "PIDEMc" = "#e41a1c")) +
+  theme(legend.position = "top")
+
+
+```
+
+The graph below shows the average difference in NMB between the PIDEMc method and the decision tree, calculated as the PIDEMc NMB minus the decision tree NMB, each relative to the standard treatment.
+
+```{r Plot-DTversusPIDEMc_subtraction}
+#| echo: false
+#| results: "hide"
+#| message: false
+#| warning: false
+
+
+ggplot(PMDT_DTML_nmb, aes(x = Threshold, y = NMB_PMDT_DTML)) +
+  geom_line(size = 1.2, color = "#1f78b4") +
+  geom_hline(yintercept = 0, linetype = "dotted", color = "black") +
+  labs(x = "Classification threshold", y = "Change in NMB (PIDEMc − DT)") +
+  theme_minimal(base_size = 16)
+```
+
+#### Decision Tree trained on PIDEMc output
+
+The first graph presents the decision tree trained on the PIDEMc outputs, using the classification threshold that maximizes the NMB.
+
+```{r Interactive-DT}
+#| echo: false
+#| results: "asis"
+#| message: false
+#| warning: false
+
+source('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/Analysis/Rules_to_interactiveDT.R', echo = FALSE, print.eval = FALSE)
+
+# File path: replace with your actual file path
+DTML_maxPIDEMc_NMB <- "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/PM Boostrap/Pre pruning/DT_rules_output_WTP2.txt"
+
+#Plot interactive collapsible tree
+DT_maxPIDEMc_NMB_tree = collapsibletree_fromrules(DTML_maxPIDEMc_NMB)
+DT_maxPIDEMc_NMB_tree
+
+```
+
+This graph presents the decision tree trained on the PIDEMc outputs, at the threshold that maximizes NMB and replicates the PIDEMc method with at least 95% accuracy.
+
+```{r Interactive-DT-acc95}
+#| echo: false
+#| results: "asis"
+#| message: false
+#| warning: false
+
+# File path: replace with your actual file path
+DTML_maxPIDEMc_NMB_95acc <- '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/PM Boostrap/Pre Pruning/DT_rules_output_WTP2_maxNMB_acc_DTML.txt'
+
+#Plot interactive collapsible tree
+DTML_maxPIDEMc_NMB_95acc_tree = collapsibletree_fromrules(DTML_maxPIDEMc_NMB_95acc)
+DTML_maxPIDEMc_NMB_95acc_tree
+```
+
+#### PIDEMS and explainability methods
+
+LIME and SHAP are not meaningful for models that only output hard class labels, because both methods rely on observing how the model’s output changes when the input is perturbed. If the model only returns 0/1 labels, small changes in the input usually do not alter the prediction, leaving nothing for these methods to approximate. Hard labels also discard valuable information about the model’s confidence: a prediction made with 99% certainty looks the same as one made with 51% certainty when only the final class is shown. As a result, the surrogate models that LIME and SHAP build cannot capture meaningful feature contributions, and the resulting explanations are unstable or misleading. In practice, these explanation methods are useful only when the model provides continuous outputs, such as probabilities or decision scores, rather than just discrete classes, because that continuous signal is what allows them to explain how features influence predictions.
+
+## References
+
+### 1. Foundational / Conceptual Papers
+
+-   Doshi-Velez, F., & Kim, B. (2017). *Towards a rigorous science of interpretable machine learning.* [arXiv:1702.08608](https://arxiv.org/abs/1702.08608)
+
+-   Lipton, Z. C. (2016). *The mythos of model interpretability.* [arXiv:1606.03490](https://arxiv.org/abs/1606.03490)
+
+-   Ribeiro, M. T., Singh, S., & Guestrin, C. (2016). *“Why should I trust you?” Explaining the predictions of any classifier.* [KDD 2016](https://dl.acm.org/doi/10.1145/2939672.2939778)
+
+-   Gilpin, L. H., Bau, D., Yuan, B. Z., Bajwa, A., Specter, M., & Kagal, L. (2018). Explaining explanations: An overview of interpretability of machine learning. arXiv:1806.00069
+
+-   Rawal, K., Fu, Z., Delaney, E., & Russell, C. (2025). Evaluating model explanations without ground truth. arXiv:2505.10399
+
+### 2. Model-Agnostic Explainability Methods
+
+-   Lundberg, S. M., & Lee, S.-I. (2017). *A unified approach to interpreting model predictions.* [NIPS 2017](https://arxiv.org/abs/1705.07874)
+
+-   Molnar, C. (2022). *Interpretable Machine Learning.* [Online Book](https://christophm.github.io/interpretable-ml-book/)
+
+-   Guidotti, R., Monreale, A., Ruggieri, S., Turini, F., Giannotti, F., & Pedreschi, D. (2018). *A survey of methods for explaining black box models.* [ACM Computing Surveys, 51(5), 1–42](https://dl.acm.org/doi/10.1145/3236009)
+
+### 3. Interpretable Models
+
+-   Rudin, C. (2019). *Stop explaining black box machine learning models for high-stakes decisions and use interpretable models instead.* [Nature Machine Intelligence, 1(5), 206–215](https://www.nature.com/articles/s42256-019-0048-x)
+
+-   Tibshirani, R. (1996). *Regression shrinkage and selection via the lasso.* [Journal of the Royal Statistical Society, Series B, 58(1), 267–288](https://www.jstor.org/stable/2346178)
+
+-   Friedman, J., Hastie, T., & Tibshirani, R. (2001). *The Elements of Statistical Learning.* Springer.
+
+### 4. Visualization & Feature Importance
+
+-   Caruana, R., Lou, Y., Gehrke, J., Koch, P., Sturm, M., & Elhadad, N. (2015). *Intelligible models for healthcare: Predicting pneumonia risk and hospital 30-day readmission.* [KDD 2015](https://dl.acm.org/doi/10.1145/2783258.2788613)
+
+-   Staniak, M., & Biecek, P. (2018). *Explanations of model predictions with live and DALEX.* [arXiv:1802.09847](https://arxiv.org/abs/1802.09847)
+
+### 5. Advanced & Recent Directions
+
+-   Janzing, D., & Schölkopf, B. (2020). *Feature relevance quantification in explainable AI: A causal perspective.* [arXiv:2003.01211](https://arxiv.org/abs/2003.01211)
+
+-   Apley, D. W., & Zhu, J. (2020). *Visualizing the effects of predictor variables in black box supervised learning models.* [Journal of the Royal Statistical Society, Series B, 82(4), 1059–1086](https://rss.onlinelibrary.wiley.com/doi/full/10.1111/rssb.12377)
+
+-   Carvalho, D. V., Pereira, E. M., & Cardoso, J. S. (2019). *Machine learning interpretability: A survey on methods and metrics.* [Electronics, 8(8), 832](https://www.mdpi.com/2079-9292/8/8/832)
+
+### 5. Criticism
+
+-   The Lancet Digital Health. (2021). *The false hope of current approaches to explainable artificial intelligence in healthcare.* [The Lancet Digital Health, 3(12), e739–e740](https://www.thelancet.com/journals/landig/article/PIIS2589-7500(21)00208-9/fulltext?tpcc=nleyeonai)
+
+-   Balagopalan, A., & Kasy, M. (2022). *The road to explainability is paved with bias.* [Proceedings of the 2022 ACM Conference on Fairness, Accountability, and Transparency (FAccT '22), 1194–1206](https://doi.org/10.1145/3531146.3533179)

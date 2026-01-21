@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network1" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Age">
+			<state id="State0" />
+			<state id="State1" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Sex">
+			<state id="State0" />
+			<state id="State1" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Satisfactory_living_condition">
+			<state id="State0" />
+			<state id="State1" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Homeless">
+			<state id="State0" />
+			<state id="State1" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Previously_incarcerated">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>Homeless</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="TB_Type">
+			<state id="State0" />
+			<state id="State1" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="DR_TB">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>Age Sex Satisfactory_living_condition Homeless Previously_incarcerated TB_Type</parents>
+			<probabilities>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="DR_TB_Rifampicin">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>DR_TB</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Distric_prevalence_of_FLQ_resistance">
+			<state id="State0" />
+			<state id="State1" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="DR_TB_FLQ">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>Distric_prevalence_of_FLQ_resistance DR_TB</parents>
+			<probabilities>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="DR_TB_Test_XpertMTB_RIF">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>DR_TB_Rifampicin</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Ofloxacin_Resistance">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>DR_TB_FLQ</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="OFX_LJ_Ofloxacin">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>Ofloxacin_Resistance</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Culture_test_Rifampicin">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>DR_TB_Rifampicin</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Levofloxacin_Resistance">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>DR_TB_FLQ</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Moxifloxacin_Resistance">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>DR_TB_FLQ</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="OFX_MGIT_Ofloxacin">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>Ofloxacin_Resistance</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="LFX_LJ_Ofloxacin">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>Levofloxacin_Resistance</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="LFX_MGIT_Ofloxacin">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>Levofloxacin_Resistance</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="MFX_LJ_Ofloxacin">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>Moxifloxacin_Resistance</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="MFX_MGIT_Ofloxacin">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>Moxifloxacin_Resistance</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.1.3402.0 ACADEMIC" name="Network1">
+			<node id="DR_TB_FLQ">
+				<name>DR-TB (FLQ)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>803 384 906 488</position>
+			</node>
+			<node id="DR_TB_Test_XpertMTB_RIF">
+				<name>DR-TB Test (Xpert MTB/RIF)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>300 504 403 608</position>
+			</node>
+			<node id="Age">
+				<name>Age</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>86 15 189 119</position>
+			</node>
+			<node id="Sex">
+				<name>Sex</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>208 10 311 114</position>
+			</node>
+			<node id="DR_TB_Rifampicin">
+				<name>DR-TB (Rifampicin)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>526 372 629 476</position>
+			</node>
+			<node id="Satisfactory_living_condition">
+				<name>Satisfactory living condition</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>324 10 427 114</position>
+			</node>
+			<node id="Homeless">
+				<name>Homeless</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>442 11 545 115</position>
+			</node>
+			<node id="Previously_incarcerated">
+				<name>Previously incarcerated</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>568 12 671 116</position>
+			</node>
+			<node id="Distric_prevalence_of_FLQ_resistance">
+				<name>Distric prevalence of FLQ resistance</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>805 16 908 120</position>
+			</node>
+			<node id="TB_Type">
+				<name>TB Type</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>686 17 789 121</position>
+			</node>
+			<node id="Culture_test_Rifampicin">
+				<name>Culture test (Rifampicin)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>417 502 520 606</position>
+			</node>
+			<node id="Ofloxacin_Resistance">
+				<name>Ofloxacin Resistance</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1051 497 1154 601</position>
+			</node>
+			<node id="Levofloxacin_Resistance">
+				<name>Levofloxacin Resistance</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1205 499 1308 603</position>
+			</node>
+			<node id="Moxifloxacin_Resistance">
+				<name>Moxifloxacin Resistance</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1361 494 1464 598</position>
+			</node>
+			<node id="DR_TB">
+				<name>DR-TB</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>677 254 780 358</position>
+			</node>
+			<node id="OFX_LJ_Ofloxacin">
+				<name>OFX_LJ (Ofloxacin)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>924 640 1027 744</position>
+			</node>
+			<node id="OFX_MGIT_Ofloxacin">
+				<name>OFX_MGIT (Ofloxacin)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1031 641 1134 745</position>
+			</node>
+			<node id="LFX_LJ_Ofloxacin">
+				<name>LFX_LJ (Ofloxacin)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1142 638 1245 742</position>
+			</node>
+			<node id="LFX_MGIT_Ofloxacin">
+				<name>LFX_MGIT (Ofloxacin)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1261 638 1364 742</position>
+			</node>
+			<node id="MFX_LJ_Ofloxacin">
+				<name>MFX_LJ (Ofloxacin)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1371 637 1474 741</position>
+			</node>
+			<node id="MFX_MGIT_Ofloxacin">
+				<name>MFX_MGIT (Ofloxacin)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1485 635 1588 739</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>
