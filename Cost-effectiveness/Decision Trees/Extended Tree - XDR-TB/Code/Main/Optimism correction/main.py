@@ -74,51 +74,51 @@ for wtp_value in wtp:
     ### Calibrated
     # PMDT - Platt Calibration - Adjusted method
     # PMDT_sampled = drtb_instance.dr_tb_pmdt_s_opt(allthresholds, DALY_individual_Moldova, preliminary_daly_costs, correction = "OptCorr_Adj")
-    # file_path_PMDT_sampled = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM Boostrap/Optimism Correction/Adjusted/Test/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
+    # file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM Boostrap/Optimism Correction/Adjusted/Test/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
 
     # PMDT - Beta Calibration - Adjusted method
-    PMDT_sampled = drtb_instance.dr_tb_pmdt_s_opt(allthresholds, DALY_individual_Moldova, preliminary_daly_costs, correction = "OptCorr_Adj")
-    file_path_PMDT_sampled = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/Input_V10/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
+    # PMDT_sampled = drtb_instance.dr_tb_pmdt_s_opt(allthresholds, DALY_individual_Moldova, preliminary_daly_costs, correction = "OptCorr_Adj")
+    # file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/Input_V10/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
 
     # PM input Only - Platt Calibration
     # PMDT_sampled = drtb_instance.dr_tb_pmdt_predonly(DALY_individual_Moldova, preliminary_daly_costs)
-    # file_path_PMDT_sampled = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
+    # file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
 
     # PM input Only - Beta Calibration
-    # PMDT_sampled = drtb_instance.dr_tb_pmdt_predonly(DALY_individual_Moldova, preliminary_daly_costs)
-    # file_path_PMDT_sampled = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM input Only/Input_V10/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
+    PMDT_sampled = drtb_instance.dr_tb_pmdt_predonly(DALY_individual_Moldova, preliminary_daly_costs)
+    file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM input Only/Input_V10/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
 
     # PMDT - Platt Calibration- Method 632
     # PMDT_sampled = drtb_instance.dr_tb_pmdt_s_opt(allthresholds, DALY_individual_Moldova, preliminary_daly_costs, corr
     # ection = "Method632")
-    # file_path_PMDT_sampled = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/Method 632/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
+    # file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/Method 632/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
 
     # PM without DM - Platt Calibration
     # PMDT_sampled = drtb_instance.dr_tb_pm_s(allthresholds, DALY_individual_Moldova, preliminary_daly_costs)
-    # file_path_PMDT_sampled = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM without DM/Test/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
+    # file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM without DM/Test/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
 
     # PM without DM - Beta Calibration
     # PMDT_sampled = drtb_instance.dr_tb_pm_s(allthresholds, DALY_individual_Moldova, preliminary_daly_costs)
-    # file_path_PMDT_sampled = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM without DM/Input_V10/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
+    # file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM without DM/Input_V10/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
 
     # DT without PM
     # PMDT_sampled = drtb_instance.dr_tb_dt_s(preliminary_daly_costs, DALY_individual_Moldova)
-    # file_path_PMDT_sampled = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/DT Only/Input_V10/' + f'DT_wtp{i}bootstrapping_samplesize200.xlsx'
+    # file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/DT Only/Input_V10/' + f'DT_wtp{i}bootstrapping_samplesize200.xlsx'
 
 
     ### Not Calibrated
 
     # PMDT - No Calibration - Adjusted method
     # PMDT_sampled = drtb_instance.dr_tb_pmdt_s_opt(allthresholds, DALY_individual_Moldova, preliminary_daly_costs, correction = "OptCorr_Adj")
-    # file_path_PMDT_sampled = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM Bootstrap/Input_V10/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
+    # file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM Bootstrap/Input_V10/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
 
     # PM input Only - No Calibration
     # PMDT_sampled = drtb_instance.dr_tb_pmdt_predonly(DALY_individual_Moldova, preliminary_daly_costs)
-    # file_path_PMDT_sampled = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM input Only/Input_V10/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
+    # file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM input Only/Input_V10/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
 
     # # PM without DM - No Calibration
     # PMDT_sampled = drtb_instance.dr_tb_pm_s(allthresholds, DALY_individual_Moldova, preliminary_daly_costs)
-    # file_path_PMDT_sampled = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM without DM/Input_V10/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
+    # file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM without DM/Input_V10/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
 
 
 

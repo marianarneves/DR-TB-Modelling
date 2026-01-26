@@ -630,7 +630,7 @@ class DRTuberculosisDT:
             optimal_treat = self.optimal_treat_pmdt_predonly(i, mainpm_prediction, self.wtp)
 
             FLQ_status = 'FLQ Resistant' if obs == 1 else 'FLQ Susceptible'
-            treatment_result = self._prepare_treatment_result(i, threshold, 'None', FLQ_status, 'PMDT',
+            treatment_result = self._prepare_treatment_result(i, threshold, mainpm_prediction, FLQ_status, 'PMDT',
                                                               optimal_treat,
                                                               preliminary_daly_costs, self.wtp)
 
@@ -726,10 +726,13 @@ class DRTuberculosisDT:
             PM_prediction = 'None'
         else:
             PM_prediction = pred
-            if pred > threshold:
-                PM_classification = 'FLQ Resistant'
-            else:
-                PM_classification = 'FLQ Susceptible'
+            PM_classification = 'None'
+            if threshold != 'None':
+
+                if pred > threshold:
+                    PM_classification = 'FLQ Resistant'
+                else:
+                    PM_classification = 'FLQ Susceptible'
         return {
             'Person': person_id,
             'Threshold': threshold,
