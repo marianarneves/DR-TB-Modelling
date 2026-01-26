@@ -11,11 +11,11 @@ Output_path = base_path + 'Cost-effectiveness/Decision Trees/Extended Tree - XDR
 # Read data
 
 #Platt Calibration
-booststrap_pred_data = pd.read_csv(hm_output_path + 'LR_bootstrap_PlattCalibration.csv')
-mainpm_pred_data = pd.read_csv(hm_output_path + 'LR_MainPM_PlattCalibration.csv')
+# booststrap_pred_data = pd.read_csv(hm_output_path + 'LR_bootstrap_PlattCalibration.csv')
+# mainpm_pred_data = pd.read_csv(hm_output_path + 'LR_MainPM_PlattCalibration.csv')
 #Beta Calibration
-# booststrap_pred_data = pd.read_csv(hm_output_path + 'LR_bootstrap_BetaCalibration.csv')
-# mainpm_pred_data = pd.read_csv(hm_output_path + 'LR_MainPM_BetaCalibration.csv')
+booststrap_pred_data = pd.read_csv(hm_output_path + 'LR_bootstrap_BetaCalibration.csv')
+mainpm_pred_data = pd.read_csv(hm_output_path + 'LR_MainPM_BetaCalibration.csv')
 # #No Calibration
 # booststrap_pred_data = pd.read_csv(hm_output_path + 'LR_bootstrap_nocalibration.csv')
 # mainpm_pred_data = pd.read_csv(hm_output_path + 'LR_MainPM_nocalibration.csv')
