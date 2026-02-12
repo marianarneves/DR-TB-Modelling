@@ -5,10 +5,18 @@ library(ggplot2)
 library(gridExtra)
 library(patchwork)
 library(purrr)
-source('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Analysis/DR_TB_PMDT_Analysis_Functions.R')
+source('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Analysis/DR_TB_PMDT_Analysis_Functions.R')
 
-setwd("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Results Comparison/")
+setwd("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Results Comparison/")
 
+# Example condition: only save if a variable 'should_save' is TRUE
+should_save <- FALSE  # change to TRUE to allow saving
+
+if (should_save) {
+  ggsave("myplot.png", plot = p, width = 6, height = 4)
+} else {
+  message("ggsave skipped because condition not met.")
+}
 
 
 # === Function to process NMB results ===
@@ -18,12 +26,12 @@ process_input_data <- function(file_path, output_loc, calibrated_label) {
   
   # Overall average NMB
   NMB_avg_overall <- varwtp$output_df %>%
-    calculate_ci(NMB_SdTreat_DM, c(wtp, Threshold)) %>%
+    compute_avg_nmb_ci(NMB_SdTreat_DM, c(wtp, Threshold)) %>%
     mutate(FLQ_Status = "All patients")
   
   # Max threshold by WTP
   max_thresholds <- NMB_avg_overall %>%
-    slice_max(NMB_avg_mean, with_ties = FALSE) %>%
+    slice_max(NMB_avg, with_ties = FALSE) %>%
     pull(Threshold) %>%
     as.data.frame() %>%
     mutate(wtp = 1:6)
@@ -31,7 +39,7 @@ process_input_data <- function(file_path, output_loc, calibrated_label) {
   
   # NMB by FLQ status
   NMB_avg_FLQ <- varwtp$output_df %>%
-    calculate_ci(NMB_SdTreat_DM, c(wtp, FLQ_Status, Threshold))
+    compute_avg_nmb_ci(NMB_SdTreat_DM, c(wtp, FLQ_Status, Threshold))
   
   # Combine overall and stratified results
   NMB_combined <- bind_rows(NMB_avg_FLQ, NMB_avg_overall) %>%
@@ -79,15 +87,15 @@ process_input_data <- function(file_path, output_loc, calibrated_label) {
 
 # === Calibrated Prediction ===
 Classification_PMDT_NMB_avg_max <- process_input_data(
-  file_path = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/PMDT_wtp2bootstrapping_samplesize200.xlsx",
-  output_loc = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/",
+  file_path = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/Input_V10/PMDT_wtp2bootstrapping_samplesize200.xlsx",
+  output_loc = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/Input_V10/",
   calibrated_label = "Classification method - Calibrated"
 )
 
 # === Uncalibrated Prediction ===
 Classification_PMDT_nocal_NMB_avg_max <- process_input_data(
-  file_path = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM Bootstrap/Optimism Correction/Adjusted/PMDT_wtp2bootstrapping_samplesize200.xlsx",
-  output_loc = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM Bootstrap/Optimism Correction/Adjusted/",
+  file_path = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM Bootstrap/Input_V10/PMDT_wtp2bootstrapping_samplesize200.xlsx",
+  output_loc = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM Bootstrap/Input_V10/",
   calibrated_label = "Classification method - Not Calibrated"
 )
 
@@ -95,9 +103,9 @@ Classification_PMDT_nocal_NMB_avg_max <- process_input_data(
 # === Combine Results and Plot ===
 Classification_NMB_combined <- bind_rows(Classification_PMDT_NMB_avg_max, Classification_PMDT_nocal_NMB_avg_max)
 
-plot_NMB_wtp_classificationmethod <- ggplot(Classification_NMB_combined, aes(x = wtp_real, y = NMB_avg_mean, color = Model)) +
+plot_NMB_wtp_classificationmethod <- ggplot(Classification_NMB_combined, aes(x = wtp_real, y = NMB_avg, color = Model)) +
   geom_line(size = 1.1) +
-  geom_ribbon(aes(ymin = t_interval_lower, ymax = t_interval_upper, fill = Model), alpha = 0.4) +
+  geom_ribbon(aes(ymin = lci_NMB_avg, ymax = uci_NMB_avg, fill = Model), alpha = 0.4) +
   labs(
     x = "Willingness-to-pay value as a portion of the Republic of Moldova's GDP per capita", 
     y = "Change in NMB", 
@@ -128,9 +136,9 @@ NMB_panel_A$Model <- factor(NMB_panel_A$Model, levels = c(
   "Probability-based method", "Classification-based method"
 ))
 
-plot_NMB_wtp_panel_A <- ggplot(NMB_panel_A, aes(x = wtp_real, y = NMB_avg_mean, color = Model)) +
+plot_NMB_wtp_panel_A <- ggplot(NMB_panel_A, aes(x = wtp_real, y = NMB_avg, color = Model)) +
   geom_line() +
-  geom_ribbon(aes(ymin = t_interval_lower, ymax = t_interval_upper, fill = Model), alpha = 0.2, color = NA) +
+  geom_ribbon(aes(ymin = lci_NMB_avg, ymax = uci_NMB_avg, fill = Model), alpha = 0.2, color = NA) +
   geom_hline(yintercept = 0, color = "black") +
   geom_vline(xintercept = 0.5, color = "black") +
   labs(
@@ -154,7 +162,7 @@ plot_NMB_wtp_panel_A <- ggplot(NMB_panel_A, aes(x = wtp_real, y = NMB_avg_mean, 
 ggsave(filename = "plot_aveeageNMB_wtp_PIDEMc.png", plot = plot_NMB_wtp_panel_A, width = 16, height = 5)
 
 ########### Plot Average NMB only - no CI ########### 
-plot_NMB_wtp_panel_A_noCI <- ggplot(NMB_panel_A, aes(x = wtp_real, y = NMB_avg_mean, color = Model)) +
+plot_NMB_wtp_panel_A_noCI <- ggplot(NMB_panel_A, aes(x = wtp_real, y = NMB_avg, color = Model)) +
   geom_line(size = 1.1) +
   geom_hline(yintercept = 0, color = "black") +
   geom_vline(xintercept = 0.5, color = "black") +
@@ -185,24 +193,24 @@ ggsave(filename = "plot_aveeageNMB_wtp_PIDEMc_noCI.png", plot = plot_NMB_wtp_pan
 
 # === Calibrated Prediction ===
 Prediction_PMDT_cal <- process_input_data(
-  file_path = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM input Only/PMDT_wtp2bootstrapping_samplesize200.xlsx",
-  output_loc = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM input Only/",
+  file_path = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM input Only/PMDT_wtp2bootstrapping_samplesize200.xlsx",
+  output_loc = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM input Only/",
   calibrated_label = "Prediction method - Calibrated"
 )
 
 # === Uncalibrated Prediction ===
 Prediction_PMDT_nocal <- process_input_data(
-  file_path = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM input Only/PMDT_wtp2bootstrapping_samplesize200.xlsx",
-  output_loc = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM input Only/",
+  file_path = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM input Only/Input_V10/PMDT_wtp2bootstrapping_samplesize200.xlsx",
+  output_loc = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM input Only/Input_V10/",
   calibrated_label = "Prediction method - Not Calibrated"
 )
 
 # === Combine Results and Plot ===
 Prediction_NMB_combined <- bind_rows(Prediction_PMDT_cal, Prediction_PMDT_nocal)
 
-plot_NMB_wtp_predictionmethod <- ggplot(Prediction_NMB_combined, aes(x = wtp_real, y = NMB_avg_mean, color = Model)) +
+plot_NMB_wtp_predictionmethod <- ggplot(Prediction_NMB_combined, aes(x = wtp_real, y = NMB_avg, color = Model)) +
   geom_line(size = 1.1) +
-  geom_ribbon(aes(ymin = t_interval_lower, ymax = t_interval_upper, fill = Model), alpha = 0.4) +
+  geom_ribbon(aes(ymin = lci_NMB_avg, ymax = uci_NMB_avg, fill = Model), alpha = 0.4) +
   labs(
     x = "Willingness-to-pay value as a portion of the Republic of Moldova's GDP per capita", 
     y = "Change in NMB", 
@@ -229,9 +237,9 @@ ggsave(
 Prediction_NMB_panel_A <- Prediction_NMB_combined %>%
   filter(FLQ_Status_m == "A. Among all patients with TB \n resistant to rifampicin", wtp_real <=1 )
 
-plot_Prediction_NMB_wtp_panel_A <- ggplot(Prediction_NMB_panel_A, aes(x = wtp_real, y = NMB_avg_mean, color = Model)) +
+plot_Prediction_NMB_wtp_panel_A <- ggplot(Prediction_NMB_panel_A, aes(x = wtp_real, y = NMB_avg, color = Model)) +
   geom_line() +
-  geom_ribbon(aes(ymin = t_interval_lower, ymax = t_interval_upper, fill = Model), alpha = 0.2, color = NA) +
+  geom_ribbon(aes(ymin = lci_NMB_avg, ymax = uci_NMB_avg, fill = Model), alpha = 0.2, color = NA) +
   geom_hline(yintercept = 0, color = "black") +
   geom_vline(xintercept = 0.5, color = "black") +
   labs(
@@ -276,10 +284,10 @@ compute_avg_nmb <- function(df, wtp_val) {
 
 
 # Read the data
-Classification_PMDT <- read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/PMDT_wtp2bootstrapping_samplesize200.xlsx')
+Classification_PMDT <- read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/Input_V10/PMDT_wtp2bootstrapping_samplesize200.xlsx')
 
 # Read bootstrapped data
-Classification_PMDT_varwtp <- read_output_tolist_varyingwtp('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/', "PMDT_", "bootstrapping_samplesize200", 6)
+Classification_PMDT_varwtp <- read_output_tolist_varyingwtp('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/Input_V10/', "PMDT_", "bootstrapping_samplesize200", 6)
 
 # Split data by WTP and assign to global environment
 walk2(names(split(Classification_PMDT_varwtp$output_df, Classification_PMDT_varwtp$output_df$wtp)), split(Classification_PMDT_varwtp$output_df, Classification_PMDT_varwtp$output_df$wtp), ~ assign(paste0("PMDT_sampled_1000_", .x, "wtp"), .y, envir = .GlobalEnv))
@@ -339,10 +347,10 @@ ggsave("Classification_plot_NMB_wtp_calibrated.png", plot = Classification_plot_
 ###################
 
 # Read the data
-Classification_nocal_PMDT <- read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM Bootstrap/Optimism Correction/Adjusted/PMDT_wtp2bootstrapping_samplesize200.xlsx')
+Classification_nocal_PMDT <- read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM Bootstrap/Input_V10/PMDT_wtp2bootstrapping_samplesize200.xlsx')
 
 # Read bootstrapped data
-Classification_nocal_PMDT_varwtp <- read_output_tolist_varyingwtp('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM Bootstrap/Optimism Correction/Adjusted/', "PMDT_", "bootstrapping_samplesize200", 6)
+Classification_nocal_PMDT_varwtp <- read_output_tolist_varyingwtp('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM Bootstrap/Input_V10/', "PMDT_", "bootstrapping_samplesize200", 6)
 
 # Split data by WTP and assign to global environment
 walk2(names(split(Classification_nocal_PMDT_varwtp$output_df, Classification_nocal_PMDT_varwtp$output_df$wtp)), split(Classification_nocal_PMDT_varwtp$output_df, Classification_nocal_PMDT_varwtp$output_df$wtp), ~ assign(paste0("PMDT_sampled_1000_", .x, "wtp_nocal"), .y, envir = .GlobalEnv))
