@@ -295,7 +295,7 @@ def dr_tb_pm_dt_s(sens_spec_PM, pred_data, DALY_individual_Moldova, prob_data, c
 
     return df_NMB_DALY_Cost_SdTreat_PMDT_sampleavg
 
-base_path = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
+base_path = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
 cost_effectiveness_path = base_path + 'Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Input/'
 
 # Read data
@@ -314,7 +314,7 @@ print(test)
 
 # PM + DT
 # Create a dynamic file path
-file_path_NMB_DALY_Cost_SdTreat_PMDT_eachpt = f"/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/test/test.xlsx"
+file_path_NMB_DALY_Cost_SdTreat_PMDT_eachpt = f"/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/test/test.xlsx"
 # Save the DataFrame to an Excel file
 test.to_excel(
     file_path_NMB_DALY_Cost_SdTreat_PMDT_eachpt,

@@ -6,7 +6,7 @@ import pyAgrum.lib.notebook as gnb
 
 
 # Learn both structure and parameters of the Bayesian Network
-learner = gum.BNLearner("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_NN.csv")  # Replace "data.csv" with the filename of your dataset
+learner = gum.BNLearner("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_NN.csv")  # Replace "data.csv" with the filename of your dataset
 bn_learned = learner.learnBN()
 
 # Visualize the learned structure

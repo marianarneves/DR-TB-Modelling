@@ -6,8 +6,8 @@ library(tidyr)
 library(ggplot2)
 library(gridExtra)
 
-test = read_excel("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Code/DR_TB_DT_MDRTree test/Test/NMB_DALY_Cost_FLQ_DLM_class_PMDT_avg_wtp1.xlsx")
-test2 = read_excel("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Code/DR_TB_DT_MDRTree test/Test/df_NMB_DALY_Cost_FLQ_Res_Sus_PMDT_avg_wtp1.xlsx")
+test = read_excel("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Code/DR_TB_DT_MDRTree test/Test/NMB_DALY_Cost_FLQ_DLM_class_PMDT_avg_wtp1.xlsx")
+test2 = read_excel("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Code/DR_TB_DT_MDRTree test/Test/df_NMB_DALY_Cost_FLQ_Res_Sus_PMDT_avg_wtp1.xlsx")
 
 
 ts=12
@@ -89,7 +89,7 @@ plot_nmb = ggplot(all_data_NMB, aes(x = threshold, y = FLQ, group = Classificati
 NMB_Cost_DALY_classification_plot = grid.arrange(plot_daly, plot_cost, plot_nmb, ncol = 1)
 
 ggsave(
-  filename = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_Cost_DALY_classification.png",
+  filename = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_Cost_DALY_classification.png",
   plot = NMB_Cost_DALY_classification_plot,
   width = 15,
   height = 10

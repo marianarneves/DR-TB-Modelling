@@ -18,7 +18,7 @@ output_PMDT = dr_tb_pm_dt(preliminary_daly_costs, sens_spec_PM, pred_data, DALY_
 
 # NMB, DALYs and Costs for each patient
 # Create a dynamic file path
-file_path_NMB_DALY_Cost_SdTreat_PMDT_eachpt = f"/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Alternative/NMB_DALY_Cost_PMDT_eachpt.xlsx"
+file_path_NMB_DALY_Cost_SdTreat_PMDT_eachpt = f"/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Alternative/NMB_DALY_Cost_PMDT_eachpt.xlsx"
 # Convert the dictionary to a pandas DataFrame
 df_DT_NMB_DALY_Cost_SdTreat_PMDT_eachpt = pd.DataFrame(output_PMDT.NMB_DALY_Cost_SdTreat_PMDT_eachpt)
 # Save the DataFrame to an Excel file
@@ -26,7 +26,7 @@ df_DT_NMB_DALY_Cost_SdTreat_PMDT_eachpt.to_excel(file_path_NMB_DALY_Cost_SdTreat
 
 #     # NMB, Cost and DALYS for DLM And FLQ depending on classification
 #     # Create a dynamic file path
-#     file_path_NMB_DALY_Cost_FLQ_DLM_class_PMDT = f"/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_DALY_Cost_FLQ_DLM_class_PMDT_avg_wtp{i}.xlsx"
+#     file_path_NMB_DALY_Cost_FLQ_DLM_class_PMDT = f"/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_DALY_Cost_FLQ_DLM_class_PMDT_avg_wtp{i}.xlsx"
 #     # Convert the dictionary to a pandas DataFrame
 #     NMB_DALY_Cost_FLQ_DLM_class_PMDT_avg = pd.DataFrame(output_PMDT.NMB_DALY_Cost_FLQ_DLM_class_avg)
 #     # Save the DataFrame to an Excel file
@@ -34,7 +34,7 @@ df_DT_NMB_DALY_Cost_SdTreat_PMDT_eachpt.to_excel(file_path_NMB_DALY_Cost_SdTreat
 #
 #     # NMB, Cost and DALYs by FLQ susceptibility
 #     # Create a dynamic file path
-#     file_path_df_NMB_DALY_Cost_FLQ_Res_Sus_PMDT_avg = f"/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_DALY_Cost_FLQ_Res_Sus_PMDT_avg_wtp{i}.xlsx"
+#     file_path_df_NMB_DALY_Cost_FLQ_Res_Sus_PMDT_avg = f"/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_DALY_Cost_FLQ_Res_Sus_PMDT_avg_wtp{i}.xlsx"
 #     # Convert the dictionary to a pandas DataFrame
 #     df_NMB_DALY_Cost_FLQ_Res_Sus_PMDT_avg = pd.DataFrame(output_PMDT.NMB_DALY_Cost_FLQ_Res_Sus_avg)
 #     # Save the DataFrame to an Excel file
@@ -46,7 +46,7 @@ df_DT_NMB_DALY_Cost_SdTreat_PMDT_eachpt.to_excel(file_path_NMB_DALY_Cost_SdTreat
 #
 #     # NMB, DALYs and Costs for each patient
 #     # Create a dynamic file path
-#     file_path_NMB_DALY_Cost_SdTreat_PM_eachpt = f"/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_DALY_Cost_PM_eachpt_wtp{i}.xlsx"
+#     file_path_NMB_DALY_Cost_SdTreat_PM_eachpt = f"/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_DALY_Cost_PM_eachpt_wtp{i}.xlsx"
 #     # Convert the dictionary to a pandas DataFrame
 #     df_DT_NMB_DALY_Cost_SdTreat_PM_eachpt = pd.DataFrame(output_PM.NMB_DALY_Cost_SdTreat_PM_eachpt)
 #     # Save the DataFrame to an Excel file
@@ -54,7 +54,7 @@ df_DT_NMB_DALY_Cost_SdTreat_PMDT_eachpt.to_excel(file_path_NMB_DALY_Cost_SdTreat
 #
 #     # NMB, Cost and DALYs by FLQ susceptibility
 #     # Create a dynamic file path
-#     file_path_df_NMB_DALY_Cost_FLQ_Res_Sus_PM_avg = f"/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_DALY_Cost_FLQ_Res_Sus_PM_avg_wtp{i}.xlsx"
+#     file_path_df_NMB_DALY_Cost_FLQ_Res_Sus_PM_avg = f"/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_DALY_Cost_FLQ_Res_Sus_PM_avg_wtp{i}.xlsx"
 #     # Convert the dictionary to a pandas DataFrame
 #     df_NMB_DALY_Cost_FLQ_Res_Sus_PM_avg = pd.DataFrame(output_PM.NMB_DALY_Cost_FLQ_Res_Sus_PM_avg)
 #     # Save the DataFrame to an Excel file
@@ -65,7 +65,7 @@ df_DT_NMB_DALY_Cost_SdTreat_PMDT_eachpt.to_excel(file_path_NMB_DALY_Cost_SdTreat
 #
 #     # NMB, DALYs and Costs for each patient
 #     # Create a dynamic file path
-#     file_path_NMB_DALY_Cost_SdTreat_DT_eachpt = f"/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_DALY_Cost_DT_eachpt_wtp{i}.xlsx"
+#     file_path_NMB_DALY_Cost_SdTreat_DT_eachpt = f"/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_DALY_Cost_DT_eachpt_wtp{i}.xlsx"
 #     # Convert the dictionary to a pandas DataFrame
 #     df_DT_NMB_DALY_Cost_SdTreat_DT_eachpt = pd.DataFrame(output_DT.NMB_DALY_Cost_SdTreat_DT_eachpt)
 #     # Save the DataFrame to an Excel file
@@ -73,7 +73,7 @@ df_DT_NMB_DALY_Cost_SdTreat_PMDT_eachpt.to_excel(file_path_NMB_DALY_Cost_SdTreat
 #
 #     # NMB, Cost and DALYs by FLQ susceptibility
 #     # Create a dynamic file path
-#     file_path_df_NMB_DALY_Cost_FLQ_Res_Sus_DT_avg = f"/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_DALY_Cost_FLQ_Res_Sus_DT_avg_wtp{i}.xlsx"
+#     file_path_df_NMB_DALY_Cost_FLQ_Res_Sus_DT_avg = f"/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_DALY_Cost_FLQ_Res_Sus_DT_avg_wtp{i}.xlsx"
 #     # Convert the dictionary to a pandas DataFrame
 #     df_NMB_DALY_Cost_FLQ_Res_Sus_DT_avg = pd.DataFrame(output_DT.NMB_DALY_Cost_FLQ_Res_Sus_DT_avg)
 #     # Save the DataFrame to an Excel file

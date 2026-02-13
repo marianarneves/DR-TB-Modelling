@@ -269,7 +269,7 @@ if __name__ == "__main__":
     # Usage
 
     # Common directory paths
-    base_path = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
+    base_path = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
     hm_output_path = base_path + 'LR/Output/Optimism Corrected/'
     # hm_output_path_method632 = hm_output_path + 'Method 632/'
     cost_effectiveness_path = base_path + 'Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Input/'
@@ -370,7 +370,7 @@ if __name__ == "__main__":
 
     # Save to Excel
     df.to_excel(
-        '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/Daly Cost Analysis/DalyResults_200samples_revision17_07.xlsx',
+        '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/Daly Cost Analysis/DalyResults_200samples_revision17_07.xlsx',
         index=False)
 
     # Sample sizes to iterate over

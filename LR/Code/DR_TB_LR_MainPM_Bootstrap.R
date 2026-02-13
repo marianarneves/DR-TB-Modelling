@@ -22,7 +22,7 @@ set.seed(1)
 
 # Load the new dataset
 data_path <-
-  "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_LR_Augumented.csv"
+  "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_LR_Augumented.csv"
 moldova_data <- read.csv(data_path)
 moldova_data$Pt_id = seq(1:dim(moldova_data)[1])
 
@@ -81,10 +81,10 @@ predictions_calplatt_mainpred <- data.frame(pt_id = moldova_data$Pt_id, observed
 predictions_calbeta_mainpred <- data.frame(pt_id = moldova_data$Pt_id, observed = moldova_data$FLQ_R, predicted = beta_mainpredp, age = moldova_data$Age, sex = moldovaSex)
 
 
-write.csv(predictions_mainpred_calcompare, "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_MainPM_platt_beta_compare.csv", row.names = FALSE)
-write.csv(predictions_mainpred, "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_MainPM_nocalibration.csv", row.names = FALSE)
-write.csv(predictions_calplatt_mainpred, "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_MainPM_PlattCalibration.csv", row.names = FALSE)
-write.csv(predictions_calbeta_mainpred, "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_MainPM_BetaCalibration.csv", row.names = FALSE)
+write.csv(predictions_mainpred_calcompare, "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_MainPM_platt_beta_compare.csv", row.names = FALSE)
+write.csv(predictions_mainpred, "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_MainPM_nocalibration.csv", row.names = FALSE)
+write.csv(predictions_calplatt_mainpred, "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_MainPM_PlattCalibration.csv", row.names = FALSE)
+write.csv(predictions_calbeta_mainpred, "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_MainPM_BetaCalibration.csv", row.names = FALSE)
 
 
 #### Crossvalidation ####
@@ -230,10 +230,10 @@ for(i in 1:nbootstrap){
   
 }
 
-write.csv(all_predictions_platt, '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_bootstrap_PlattCalibration.csv', row.names = FALSE)
-write.csv(all_predictions_beta, '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_bootstrap_BetaCalibration.csv', row.names = FALSE)
-write.csv(all_predictions_platt_beta_compare, "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_bootstrap_platt_beta_compare.csv", row.names = FALSE)
-write.csv(all_predictions_nocalibration, "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_bootstrap_nocalibration.csv", row.names = FALSE)
+write.csv(all_predictions_platt, '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_bootstrap_PlattCalibration.csv', row.names = FALSE)
+write.csv(all_predictions_beta, '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_bootstrap_BetaCalibration.csv', row.names = FALSE)
+write.csv(all_predictions_platt_beta_compare, "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_bootstrap_platt_beta_compare.csv", row.names = FALSE)
+write.csv(all_predictions_nocalibration, "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_bootstrap_nocalibration.csv", row.names = FALSE)
 
 
 # Calculate optimism-corrected performance and confidence interval
@@ -325,4 +325,4 @@ for(i in 1:200){
   
 }
 
-write.csv(all_predictions_platt, '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Method 632/LR_bootstrap_PlattCalibration_Method632.csv', row.names = FALSE)
+write.csv(all_predictions_platt, '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Method 632/LR_bootstrap_PlattCalibration_Method632.csv', row.names = FALSE)

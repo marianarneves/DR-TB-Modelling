@@ -7,10 +7,10 @@ library(patchwork)
 
 #1000 samples
 
-PMDT_sampled_1000_orig = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/Optimism Correction/PM Sample/Original/PMDT_wtp2bootstrapping_samplesize200.xlsx')
-PMDT_sampled_1000_adj = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/Optimism Correction/PM Sample/Adjusted/Test - Prob sampled/PMDT_wtp2bootstrapping_samplesize200.xlsx')
-PMDT_sampled_1000_beta = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/Optimism Correction/PM Sample/Beta/Test - Truncated Probs/PMDT_wtp2bootstrapping_samplesize200.xlsx')
-PMDT_sampled_1000_predonly = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/Optimism Correction/Prediction Only/PMDT_wtp2bootstrapping_samplesize200.xlsx')
+PMDT_sampled_1000_orig = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/Optimism Correction/PM Sample/Original/PMDT_wtp2bootstrapping_samplesize200.xlsx')
+PMDT_sampled_1000_adj = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/Optimism Correction/PM Sample/Adjusted/Test - Prob sampled/PMDT_wtp2bootstrapping_samplesize200.xlsx')
+PMDT_sampled_1000_beta = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/Optimism Correction/PM Sample/Beta/Test - Truncated Probs/PMDT_wtp2bootstrapping_samplesize200.xlsx')
+PMDT_sampled_1000_predonly = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/Optimism Correction/Prediction Only/PMDT_wtp2bootstrapping_samplesize200.xlsx')
 
 PMDT_sampled_1000_orig_avg = PMDT_sampled_1000_orig%>%
   group_by(Threshold)%>%

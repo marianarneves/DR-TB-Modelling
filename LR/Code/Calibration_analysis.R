@@ -1,16 +1,16 @@
 library(dplyr)
 library(ggplot2)
 
-setwd('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/')
+setwd('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/')
 
 # Load the new dataset
 data_path <-
-  "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_LR_Augumented.csv"
+  "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_LR_Augumented.csv"
 moldova_data <- read.csv(data_path)
 moldova_data$Pt_id = seq(1:dim(moldova_data)[1])
 
 # Read predictions for logistic regression
-pred_LR <- read.csv('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_MainPM_platt_beta_compare.csv')
+pred_LR <- read.csv('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_MainPM_platt_beta_compare.csv')
 
 library(dplyr)
 

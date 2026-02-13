@@ -11,11 +11,11 @@ set.seed(3)
 #Read dataset
 tb_moldova <-
   read.csv(
-    "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_HM.csv"
+    "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_HM.csv"
   )
 
 # data with prevalence
-data_path <- "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_FLQ_R_p.csv"
+data_path <- "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_FLQ_R_p.csv"
 moldova_data_prev <- read.csv(data_path)
 
 #complete cases

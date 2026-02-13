@@ -130,12 +130,12 @@ print(shap_summary, n = Inf)
 
 # Save global SHAP values to Excel or CSV
 write.csv(shap_summary,
-          file = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/SHAP_summary_FLQ_R.csv",
+          file = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/SHAP_summary_FLQ_R.csv",
           row.names = FALSE)
 
 # Optional: Save individual SHAP values (for n = 50 patients)
 write.csv(shap_df,
-          file = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/SHAP_individual_values_FLQ_R.csv",
+          file = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/SHAP_individual_values_FLQ_R.csv",
           row.names = FALSE)
 
 cat("✅ SHAP analysis complete. Results saved.\n")

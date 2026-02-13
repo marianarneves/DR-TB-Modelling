@@ -6,7 +6,7 @@ library(ggplot2)  # For data visualization
 # Reading a CSV file into a dataframe called `HM_bootstrap`. The `header = TRUE` argument ensures
 # that the first row of the CSV is treated as column names.
 HM_bootstrap = read.csv(
-  '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap PM - optimism corrected/Main/Output/cons_D201/HM_bootstrap_d2_01_platt_beta_compare_1000000runs.csv',
+  '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap PM - optimism corrected/Main/Output/cons_D201/HM_bootstrap_d2_01_platt_beta_compare_1000000runs.csv',
   header = TRUE
 ) %>%
   rename(predicted_beta_origdata = predicted_beta_origidata)

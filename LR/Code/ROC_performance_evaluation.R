@@ -1,15 +1,15 @@
-setwd('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output')
+setwd('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output')
 
-source("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Code/ROC_performance.R")
+source("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Code/ROC_performance.R")
 
 # Load the new dataset
 data_path <-
-  "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_LR_Augumented.csv"
+  "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_LR_Augumented.csv"
 moldova_data <- read.csv(data_path)
 moldova_data$pt_id = seq(1:dim(moldova_data)[1])
 
 # Read predictions for consD201, consD205, and logistic regression
-pred_LR <- read.csv('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/LR_MainPM_platt_beta_compare.csv')
+pred_LR <- read.csv('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/LR_MainPM_platt_beta_compare.csv')
 
 #### Performance of the LR - Platt calibration ####
 HM_performance = roc_performance(pred_LR$predicted_platt_mainpred, moldova_data, moldova_data$FLQ_R)

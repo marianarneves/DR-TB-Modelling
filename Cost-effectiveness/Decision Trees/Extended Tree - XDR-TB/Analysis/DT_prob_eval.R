@@ -2,8 +2,8 @@ library(ggplot2)
 library(dplyr)
 library(tidyverse)
 
-DecisionTree_probs_original  = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM Boostrap/Optimism Correction/Original/DecisionTree_probs_alt.xlsx')
-DecisionTree_probs_adjusted  = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM Boostrap/Optimism Correction/Adjusted/DecisionTree_probs_alt.xlsx')
+DecisionTree_probs_original  = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM Boostrap/Optimism Correction/Original/DecisionTree_probs_alt.xlsx')
+DecisionTree_probs_adjusted  = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM Boostrap/Optimism Correction/Adjusted/DecisionTree_probs_alt.xlsx')
 
 
 # Extract the class size
@@ -172,7 +172,7 @@ trajectory_plot <- ggplot(DT_probs_combined_adj, aes(x = threshold, y = value, g
   guides(color = guide_legend(override.aes = list(alpha = 1), title = NULL))  # Keep legend colors fully visible
 
 ggsave(
-  filename = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM Boostrap/Optimism Correction/DecisionTreeProb_comparison.png',
+  filename = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM Boostrap/Optimism Correction/DecisionTreeProb_comparison.png',
   plot = trajectory_plot,
   width = 10,
   height = 8,
@@ -290,7 +290,7 @@ trajectory_plot_adjustedonly <- ggplot(DT_probs_combined_adjusted_adj, aes(x = t
   guides(color = guide_legend(override.aes = list(alpha = 1), title = NULL))
 
 ggsave(
-  filename = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM Boostrap/Optimism Correction/DecisionTreeProb_comparison_adjustedonly.png',
+  filename = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM Boostrap/Optimism Correction/DecisionTreeProb_comparison_adjustedonly.png',
   plot = trajectory_plot_adjustedonly,
   width = 10,
   height = 6,

@@ -311,7 +311,7 @@ class ParameterSampler:
 
 if __name__ == '__main__':
     # Common directory paths
-    base_path = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
+    base_path = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
     hm_output_path = base_path + 'LR/Output/Optimism Corrected/'
     # hm_output_path_method632 = hm_output_path + 'Method 632/'
     cost_effectiveness_path = base_path + 'Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Input/'
@@ -432,7 +432,7 @@ if __name__ == '__main__':
     summary_df = pd.DataFrame(summary_data)
 
     # Step 4: Save to Excel
-    summary_df.to_excel('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/Sampled Parameters/parameter_averages_1000_revision17_07.xlsx', index=False)
+    summary_df.to_excel('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/Sampled Parameters/parameter_averages_1000_revision17_07.xlsx', index=False)
     #
     # df = pd.DataFrame(list(averages.items()), columns=["Parameter", "Average"])
-    # df.to_excel('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/Sampled Parameters/parameter_averages_1000.xlsx", index=False)
+    # df.to_excel('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/Sampled Parameters/parameter_averages_1000.xlsx", index=False)

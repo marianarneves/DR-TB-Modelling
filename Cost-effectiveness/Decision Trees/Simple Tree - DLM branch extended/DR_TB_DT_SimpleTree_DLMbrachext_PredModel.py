@@ -5,7 +5,7 @@ from DR_TB_Classes import *
 import pandas as pd
 
 # Read the CSV file with predictions
-pred_data = pd.read_csv('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/HM Output/pred_obs_calibrated_model.csv')
+pred_data = pd.read_csv('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/HM Output/pred_obs_calibrated_model.csv')
 
 # Costs
 CostFLQ = 200
@@ -27,7 +27,7 @@ T2_n = TerminalNode(name='T2_n', cost=CostFLQ_DLM)
 T3_n = TerminalNode(name='T3_n', cost=CostDLM)
 T4_n = TerminalNode(name='T4_n', cost=CostDLM_FLQ)
 
-csv_file = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/HM Output/sens_spec_calibrated_model.csv'
+csv_file = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/HM Output/sens_spec_calibrated_model.csv'
 cost_threshold = []
 cost_FLQ_P = []
 cost_FLQ_N = []
@@ -95,7 +95,7 @@ plt.grid(True)
 # Draw a horizontal line at y = 10
 plt.axhline(y=C_Std_Treat, color='r', linestyle='--', label='Cost of standard treatment')
 
-plt.savefig(r'/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Simple Tree - DLM branch extended/Output/DR_TB_HM_simpleDT_DLMbrachext_averagecost_betacalibratedmodel.png')
+plt.savefig(r'/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Simple Tree - DLM branch extended/Output/DR_TB_HM_simpleDT_DLMbrachext_averagecost_betacalibratedmodel.png')
 
 plt.show()
 plt.scatter(thresholds, cost_FLQ_P)

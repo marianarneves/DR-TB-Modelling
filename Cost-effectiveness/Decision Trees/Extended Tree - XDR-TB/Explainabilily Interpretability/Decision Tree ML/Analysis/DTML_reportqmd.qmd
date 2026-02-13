@@ -82,10 +82,10 @@ The first graph presents the decision tree trained on the PIDEMc outputs, using 
 #| message: false
 #| warning: false
 
-source('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/Analysis/Rules_to_interactiveDT.R', echo = FALSE, print.eval = FALSE)
+source('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/Analysis/Rules_to_interactiveDT.R', echo = FALSE, print.eval = FALSE)
 
 # File path: replace with your actual file path
-DTML_maxPIDEMc_NMB <- "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/PM Boostrap/Pre pruning/DT_rules_output_WTP2.txt"
+DTML_maxPIDEMc_NMB <- "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/PM Boostrap/Pre pruning/DT_rules_output_WTP2.txt"
 
 #Plot interactive collapsible tree
 DT_maxPIDEMc_NMB_tree = collapsibletree_fromrules(DTML_maxPIDEMc_NMB)
@@ -102,7 +102,7 @@ This graph presents the decision tree trained on the PIDEMc outputs, at the thre
 #| warning: false
 
 # File path: replace with your actual file path
-DTML_maxPIDEMc_NMB_95acc <- '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/PM Boostrap/Pre Pruning/DT_rules_output_WTP2_maxNMB_acc_DTML.txt'
+DTML_maxPIDEMc_NMB_95acc <- '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/PM Boostrap/Pre Pruning/DT_rules_output_WTP2_maxNMB_acc_DTML.txt'
 
 #Plot interactive collapsible tree
 DTML_maxPIDEMc_NMB_95acc_tree = collapsibletree_fromrules(DTML_maxPIDEMc_NMB_95acc)

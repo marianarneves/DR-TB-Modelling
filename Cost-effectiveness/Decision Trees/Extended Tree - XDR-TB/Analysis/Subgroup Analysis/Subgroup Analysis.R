@@ -5,9 +5,9 @@ library(ggplot2)
 library(gridExtra)
 library(patchwork)
 library(purrr)
-source('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Analysis/DR_TB_PMDT_Analysis_Functions.R')
+source('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Analysis/DR_TB_PMDT_Analysis_Functions.R')
 
-setwd("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Results Comparison/")
+setwd("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Results Comparison/")
 
 
 
@@ -112,12 +112,12 @@ add_opt_treat <- function(df, threshold = 'N') {
 
 # Load the new dataset
 data_path <-
-  "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_LR_Augumented.csv"
+  "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_LR_Augumented.csv"
 moldova_data <- read.csv(data_path)
 moldova_data$Pt_id = seq(1:dim(moldova_data)[1])
 
 # Read bootstrapped data
-Classification_PMDT_varwtp <- read_output_tolist_varyingwtp('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/', "PMDT_", "bootstrapping_samplesize200", 6)
+Classification_PMDT_varwtp <- read_output_tolist_varyingwtp('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/', "PMDT_", "bootstrapping_samplesize200", 6)
 
 Classification_PMDT_wtp2_ptchar = Classification_PMDT_varwtp$output_list$wtp_2 %>%
   mutate(Person_m = Person + 1) %>%

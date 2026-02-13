@@ -206,7 +206,7 @@ def calculate_pre_daly_cost_s(sampler, mainpm_pred_data, DALY_individual_Moldova
 if __name__ == "__main__":
     # Usage
 
-    base_path = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
+    base_path = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
     cost_effectiveness_path = base_path + 'Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Input/'
 
     # Read data

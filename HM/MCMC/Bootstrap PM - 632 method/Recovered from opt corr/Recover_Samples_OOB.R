@@ -1,6 +1,6 @@
 library(dplyr)
 
-setwd('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap/Bootstrap PM - 632 method/Recovered from opt corr/')
+setwd('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap/Bootstrap PM - 632 method/Recovered from opt corr/')
 
 opt_pred = read.csv('HM_bootstrap_calibrated_predictions_copy.csv')
 

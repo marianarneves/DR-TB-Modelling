@@ -6,12 +6,12 @@
 library(dplyr)
 library(fastDummies)
 
-setwd("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/")
+setwd("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/")
 
 #Read dataset
 tb_moldova <-
   read.csv(
-    "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/journal.pdig.0000059.s002.csv"
+    "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/journal.pdig.0000059.s002.csv"
   )
 
 
@@ -32,7 +32,7 @@ clean_data = tb_moldova %>%
 
 #write.csv(
 #  clean_data,
-#  "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/moldova_dataset_genieversion.csv",
+#  "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/moldova_dataset_genieversion.csv",
 #  row.names = FALSE
 #)
 
@@ -167,7 +167,7 @@ tb_moldova_FLQ_R_HM = tb_moldova_DR %>%
     remove_selected_columns = TRUE
   )
 
-write.csv(tb_moldova_FLQ_R_HM, "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_HM.csv", row.names = FALSE)
+write.csv(tb_moldova_FLQ_R_HM, "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_HM.csv", row.names = FALSE)
 
 # Hierarchical model R - Simplified
 
@@ -215,7 +215,7 @@ tb_moldova_FLQ_R_HM_simpler = tb_moldova_DR %>%
          'Microscopy_1'
          )
 
-write.csv(tb_moldova_FLQ_R_HM_simpler, "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_HM_simpler.csv", row.names = FALSE)
+write.csv(tb_moldova_FLQ_R_HM_simpler, "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_HM_simpler.csv", row.names = FALSE)
 
 # Logistic Regression model R - Augmented
 
@@ -226,7 +226,7 @@ tb_moldova_FLQ_R_LR_augmented = tb_moldova_FLQ_R_HM %>%
     remove_first_dummy = TRUE,
     remove_selected_columns = TRUE
   )
-write.csv(tb_moldova_FLQ_R_LR_augmented, "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_LR_Augumented.csv", row.names = FALSE)
+write.csv(tb_moldova_FLQ_R_LR_augmented, "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_LR_Augumented.csv", row.names = FALSE)
 
 
 
@@ -248,7 +248,7 @@ tb_moldova_FLQ_R_BN = tb_moldova_DR %>%
   mutate_if(is.character, ~na_if(., "missing"))%>%
   mutate_all(as.factor)
 
-write.csv(tb_moldova_FLQ_R_BN, "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_BN.csv", row.names = FALSE)
+write.csv(tb_moldova_FLQ_R_BN, "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_BN.csv", row.names = FALSE)
 
 
 
@@ -258,5 +258,5 @@ tb_moldova_FLQ_R_p = tb_moldova_DR %>%
   left_join(., FLQ_R_residence_p, by = "Residence") %>%
   select(prevalencep, FLQ_R)
 
-write.csv(tb_moldova_FLQ_R_p, "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_FLQ_R_p.csv", row.names = FALSE)
+write.csv(tb_moldova_FLQ_R_p, "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_FLQ_R_p.csv", row.names = FALSE)
 

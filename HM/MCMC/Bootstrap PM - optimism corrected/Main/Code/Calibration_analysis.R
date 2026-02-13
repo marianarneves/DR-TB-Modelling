@@ -1,5 +1,5 @@
 # Read predictions for consD201, consD205, and logistic regression
-pred_consd201 <- read.csv('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap PM - optimism corrected/Main/Output/cons_D201/HM_MainPM_d2_01_platt_beta_compare_1000000runs.csv', header = TRUE)
+pred_consd201 <- read.csv('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap PM - optimism corrected/Main/Output/cons_D201/HM_MainPM_d2_01_platt_beta_compare_1000000runs.csv', header = TRUE)
 
 
 # Fit logistic regression to recalibrate

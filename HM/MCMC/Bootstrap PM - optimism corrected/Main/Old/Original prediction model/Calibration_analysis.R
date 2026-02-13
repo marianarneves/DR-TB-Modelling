@@ -16,10 +16,10 @@ if (rstudioapi::isAvailable()) {
 
 # Load the new dataset
 data_path <-
-  "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_HM.csv"
+  "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_HM.csv"
 moldova_data <- read.csv(data_path)
 
-HM_main_pred = read.csv('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap/Bootstrap PM - optimism corrected/Main/Output/cons_D2 01/Sample Size 200/HM_mainPM_calibrated_predictions.csv', header = TRUE)
+HM_main_pred = read.csv('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap/Bootstrap PM - optimism corrected/Main/Output/cons_D2 01/Sample Size 200/HM_mainPM_calibrated_predictions.csv', header = TRUE)
 
 # Fit logistic regression to recalibrate
 platt_model <- glm(moldova_data$FLQ_R ~ HM_main_pred$predicted, family = binomial(link = "logit"))

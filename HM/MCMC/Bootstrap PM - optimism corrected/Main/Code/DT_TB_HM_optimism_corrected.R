@@ -1,4 +1,4 @@
-setwd('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/MCMC/Bootstrap PM - optimism corrected/Main/Code')
+setwd('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/MCMC/Bootstrap PM - optimism corrected/Main/Code')
 
 library(dplyr)   # for data manipulation
 library(caret)   # for model training
@@ -16,7 +16,7 @@ source("crossvalidation_HM.R")
 
 # Load the new dataset
 data_path <-
-  "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_HM.csv"
+  "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_HM.csv"
 moldova_data <- read.csv(data_path)
 moldova_data$pt_id = seq(1:dim(moldova_data)[1])
 
@@ -113,7 +113,7 @@ time_taken <- end_time - start_time
 combined_dataframe <- do.call(rbind, all_predictions)
 
 # Save the predictions to a CSV file
-write.csv(combined_dataframe, "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap/Bootstrap PM - optimism corrected/Main/Output/cons_D2 05/HM_bootstrap_calibrated_predictions_test2_smallsample.csv", row.names = FALSE)
+write.csv(combined_dataframe, "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap/Bootstrap PM - optimism corrected/Main/Output/cons_D2 05/HM_bootstrap_calibrated_predictions_test2_smallsample.csv", row.names = FALSE)
 
 ###########################
 # All data  - Predictions #
@@ -172,4 +172,4 @@ moldovaSex = ifelse(moldova_data$Sex == 1, "Female", "Male" )
 moldova_data_all_predictions<- data.frame(predicted = moldova_data_beta, observed = moldova_data$FLQ_R, age = moldova_data$Age, sex = moldovaSex)
 
 # Save the predictions to a CSV file
-write.csv(moldova_data_all_predictions, "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap/Bootstrap PM - optimism corrected/Main/Output/cons_D2 05/HM_mainPM_calibrated_predictions_test2smallsample.csv", row.names = FALSE)
+write.csv(moldova_data_all_predictions, "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap/Bootstrap PM - optimism corrected/Main/Output/cons_D2 05/HM_mainPM_calibrated_predictions_test2smallsample.csv", row.names = FALSE)

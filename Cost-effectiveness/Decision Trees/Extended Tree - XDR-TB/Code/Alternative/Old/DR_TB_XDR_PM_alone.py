@@ -4,7 +4,7 @@ import pandas as pd
 from DR_TB_Classes import *
 
 # Common directory paths
-base_path = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
+base_path = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
 hm_output_path = base_path + 'HM/HM Output/'
 cost_effectiveness_path = base_path + 'Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/'
 

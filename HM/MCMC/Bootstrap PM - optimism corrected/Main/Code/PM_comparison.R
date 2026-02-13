@@ -3,13 +3,13 @@ library(pROC)
 library(ggplot2)
 
 # Load the new dataset
-data_path <- "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_HM.csv"
+data_path <- "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_HM.csv"
 moldova_data <- read.csv(data_path)
 
 # Read predictions for consD201, consD205, and logistic regression
-pred_consd201 <- read.csv('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap PM - optimism corrected/Main/Output/cons_D201/HM_MainPM_d2_01_platt_beta_compare_1000000runs.csv', header = TRUE)
-pred_consd205 <- read.csv('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap PM - optimism corrected/Main/Output/cons_D205/HM_MainPM_d2_05_platt_beta_compare_1000000runs.csv', header = TRUE)
-logreg <- read.csv('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap PM - optimism corrected/Tests/Logistic Regression/main_pred.csv', header = TRUE)
+pred_consd201 <- read.csv('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap PM - optimism corrected/Main/Output/cons_D201/HM_MainPM_d2_01_platt_beta_compare_1000000runs.csv', header = TRUE)
+pred_consd205 <- read.csv('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap PM - optimism corrected/Main/Output/cons_D205/HM_MainPM_d2_05_platt_beta_compare_1000000runs.csv', header = TRUE)
+logreg <- read.csv('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap PM - optimism corrected/Tests/Logistic Regression/main_pred.csv', header = TRUE)
 
 # Compute ROC curves for all models
 roc_consd201 <- roc(pred_consd201$observed, pred_consd201$predicted_beta)

@@ -2,7 +2,7 @@ library(dplyr)
 library(ggplot2)
 
 setwd(
-  '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap/Bootstrap PM - 632 method/Recovered from opt corr/'
+  '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/Bootstrap/Bootstrap PM - 632 method/Recovered from opt corr/'
 )
 
 Maincalibratedpred = read.csv("HM_mainPM_calibrated_predictions.csv", header = TRUE)

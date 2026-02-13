@@ -4,11 +4,11 @@ from DR_TB_Classes import *
 import pandas as pd
 
 # Read the CSV file with predictions, costs, dalys and probabilities
-pred_data = pd.read_csv('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/HM Output/pred_obs_calibrated_model.csv')
-cost_data = pd.read_excel('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Cost_DALY_Prob_asumptions.xlsx', 'Costs')
-daly_data = pd.read_excel('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Cost_DALY_Prob_asumptions.xlsx', 'DALY')
-prob_data = pd.read_excel('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Cost_DALY_Prob_asumptions.xlsx', 'Probabilities')
-csv_file = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/HM Output/sens_spec_calibrated_model.csv'
+pred_data = pd.read_csv('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/HM Output/pred_obs_calibrated_model.csv')
+cost_data = pd.read_excel('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Cost_DALY_Prob_asumptions.xlsx', 'Costs')
+daly_data = pd.read_excel('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Cost_DALY_Prob_asumptions.xlsx', 'DALY')
+prob_data = pd.read_excel('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Cost_DALY_Prob_asumptions.xlsx', 'Probabilities')
+csv_file = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/HM Output/sens_spec_calibrated_model.csv'
 
 def largest_non_positive_threshold(data):
     for entry in reversed(data):
@@ -339,7 +339,7 @@ plt.xlabel('Threshold')
 plt.ylabel('Change in NMB')
 plt.title('Threshold vs Change in NMB')
 plt.grid(True)
-#plt.savefig(r'/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_St_Treat_Opt_Treat.png')
+#plt.savefig(r'/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_St_Treat_Opt_Treat.png')
 plt.show()
 
 # Everyone on FLQ

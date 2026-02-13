@@ -82,4 +82,4 @@ NMB_COST_DALY_plots <- wrap_plots(plots, ncol = 3) +
 
 
 # Save the final plot
-ggsave(filename = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/panel_plots_shared_legend.png", plot = NMB_COST_DALY_plots, width = 14, height = 10)
+ggsave(filename = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/panel_plots_shared_legend.png", plot = NMB_COST_DALY_plots, width = 14, height = 10)

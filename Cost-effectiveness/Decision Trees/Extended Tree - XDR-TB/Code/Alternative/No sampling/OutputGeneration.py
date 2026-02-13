@@ -183,7 +183,7 @@ def output_gen(sens_spec_PM, pred_data, DALY_individual_Moldova, prob_data, cost
 
 if __name__ == '__main__':
     # Common directory paths
-    base_path = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
+    base_path = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
     cost_effectiveness_path = base_path + 'Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Input/'
 
     # Read data

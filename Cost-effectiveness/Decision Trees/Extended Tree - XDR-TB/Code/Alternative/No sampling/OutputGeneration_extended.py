@@ -142,7 +142,7 @@ def output_gen(sens_spec_PM, pred_data, DALY_individual_Moldova, prob_data, cost
                 # NMB, DALYs and Costs for each patient
                 final_sampleavg_NMB_DALY_Cost_SdTreat_PMDT_eachpt = calculate_sample_averages(NMB_DALY_Cost_SdTreat_PMDT_eachpt, ['FLQ_Status', 'Class'], ['Person', 'threshold'])
                 # Create a dynamic file path
-                file_path_NMB_DALY_Cost_SdTreat_PMDT_eachpt = f"/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/test/sampleavg_NMB_DALY_Cost_PMDT_eachpt_wtp{i}.xlsx"
+                file_path_NMB_DALY_Cost_SdTreat_PMDT_eachpt = f"/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/test/sampleavg_NMB_DALY_Cost_PMDT_eachpt_wtp{i}.xlsx"
                 # Save the DataFrame to an Excel file
                 final_sampleavg_NMB_DALY_Cost_SdTreat_PMDT_eachpt.to_excel(
                     file_path_NMB_DALY_Cost_SdTreat_PMDT_eachpt,
@@ -152,7 +152,7 @@ def output_gen(sens_spec_PM, pred_data, DALY_individual_Moldova, prob_data, cost
                 sampleavg_NMB_DALY_Cost_FLQ_DLM_class_PMDT_avg = \
                 NMB_DALY_Cost_FLQ_DLM_class_PMDT_avg.groupby('threshold').mean().reset_index()
                 # Create a dynamic file path
-                file_path_NMB_DALY_Cost_FLQ_DLM_class_PMDT = f"/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/test/sampleavg_NMB_DALY_Cost_FLQ_DLM_class_PMDT_avg_wtp{i}.xlsx"
+                file_path_NMB_DALY_Cost_FLQ_DLM_class_PMDT = f"/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/test/sampleavg_NMB_DALY_Cost_FLQ_DLM_class_PMDT_avg_wtp{i}.xlsx"
                 # Save the DataFrame to an Excel file
                 sampleavg_NMB_DALY_Cost_FLQ_DLM_class_PMDT_avg.to_excel(file_path_NMB_DALY_Cost_FLQ_DLM_class_PMDT, index=False)
 
@@ -160,7 +160,7 @@ def output_gen(sens_spec_PM, pred_data, DALY_individual_Moldova, prob_data, cost
                 sampleavg_NMB_DALY_Cost_FLQ_Res_Sus_PMDT_avg = \
                     NMB_DALY_Cost_FLQ_Res_Sus_PMDT_avg.groupby('threshold').mean().reset_index()
                 # Create a dynamic file path
-                file_path_df_NMB_DALY_Cost_FLQ_Res_Sus_PMDT_avg = f"/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/test/sampleavg_NMB_DALY_Cost_FLQ_Res_Sus_PMDT_avg_wtp{i}.xlsx"
+                file_path_df_NMB_DALY_Cost_FLQ_Res_Sus_PMDT_avg = f"/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/test/sampleavg_NMB_DALY_Cost_FLQ_Res_Sus_PMDT_avg_wtp{i}.xlsx"
                 # Save the DataFrame to an Excel file
                 sampleavg_NMB_DALY_Cost_FLQ_Res_Sus_PMDT_avg.to_excel(file_path_df_NMB_DALY_Cost_FLQ_Res_Sus_PMDT_avg,
                                                                         index=False)
@@ -168,7 +168,7 @@ def output_gen(sens_spec_PM, pred_data, DALY_individual_Moldova, prob_data, cost
 
 if __name__ == '__main__':
     # Common directory paths
-    base_path = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
+    base_path = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
     cost_effectiveness_path = base_path + 'Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Input/'
 
     # Read data

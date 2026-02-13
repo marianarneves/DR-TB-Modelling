@@ -8,7 +8,7 @@ library(ggplot2)
 library(rms)
 library(betacal)
 library(tidyr)
-source('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Analysis/DR_TB_PMDT_Analysis_Functions.R')
+source('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Analysis/DR_TB_PMDT_Analysis_Functions.R')
 
 set.seed(1)
 
@@ -42,7 +42,7 @@ add_opt_treat <- function(df, threshold = 'N') {
 
 # Load the new dataset
 data_path <-
-  "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_LR_Augumented.csv"
+  "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_LR_Augumented.csv"
 moldova_data <- read.csv(data_path)
 moldova_data$Pt_id = seq(1:dim(moldova_data)[1])
 
@@ -51,7 +51,7 @@ moldova_data$Pt_id = seq(1:dim(moldova_data)[1])
 #       Probability Based Method       #
 ########################################
 
-output_loc = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM input Only/'
+output_loc = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM input Only/'
 Prediction_PMDT_varwtp <- read_output_tolist_varyingwtp(output_loc, "PMDT_", "bootstrapping_samplesize200", 6)
 
 # Apply and save each to a CSV file
@@ -61,7 +61,7 @@ for (i in 1:6) {
   write.csv(
     df_i,
     file = paste0(
-      "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/PM input Only/moldova_data_opt_treat_prediction_allthresholds_wtp",
+      "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/PM input Only/moldova_data_opt_treat_prediction_allthresholds_wtp",
       i, ".csv"
     ),
     row.names = FALSE
@@ -72,7 +72,7 @@ for (i in 1:6) {
 #       Classification Based Method       #
 ###########################################
 
-output_loc = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/Input_V10/'
+output_loc = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/Input_V10/'
 Classification_PMDT_varwtp <- read_output_tolist_varyingwtp(output_loc, "PMDT_", "bootstrapping_samplesize200", 6)
 
 # Maximum NMB threshold, WTP = 1
@@ -88,7 +88,7 @@ Classification_PMDT_threshold_max = Classification_PMDT_varwtp$output_list$wtp_2
 
 moldova_data_opt_treat_classification = add_opt_treat(Classification_PMDT_threshold_max, threshold = 'N')
 
-write.csv(moldova_data_opt_treat_classification, '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/PM Boostrap/moldova_data_opt_treat_classification_optthreshold_wtp1.csv', row.names = FALSE)
+write.csv(moldova_data_opt_treat_classification, '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/PM Boostrap/moldova_data_opt_treat_classification_optthreshold_wtp1.csv', row.names = FALSE)
 
 # All thresholds
 
@@ -101,7 +101,7 @@ for (i in 1:6) {
   write.csv(
     df_i,
     file = paste0(
-      '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/PM Boostrap/Input/test/moldova_data_opt_treat_classification_allthresholds_wtp',
+      '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/PM Boostrap/Input/test/moldova_data_opt_treat_classification_allthresholds_wtp',
       i, ".csv"
     ),
     row.names = FALSE

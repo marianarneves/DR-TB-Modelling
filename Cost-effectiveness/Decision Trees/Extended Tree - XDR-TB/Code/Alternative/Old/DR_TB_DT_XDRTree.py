@@ -4,7 +4,7 @@ import pandas as pd
 from DR_TB_Classes import *
 
 # Common directory paths
-base_path = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
+base_path = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
 hm_output_path = base_path + 'HM/HM Output/'
 cost_effectiveness_path = base_path + 'Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/'
 
@@ -402,7 +402,7 @@ plt.xlabel('Threshold')
 plt.ylabel('Change in NMB')
 plt.title('Threshold vs Change in NMB')
 plt.grid(True)
-plt.savefig(r'/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_St_Treat_Opt_Treat.png')
+plt.savefig(r'/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_St_Treat_Opt_Treat.png')
 plt.show()
 
 thresholds = [item['threshold'] for item in NMB_s_threshold]
@@ -491,7 +491,7 @@ plt.ylabel('Number of patients')
 plt.title('Number of patients whose optimal treatment is DLM')
 plt.grid(True)
 
-plt.savefig(r'/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/N_patients_DLM_threshold.png')
+plt.savefig(r'/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/N_patients_DLM_threshold.png')
 
 
 # Show the plot

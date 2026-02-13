@@ -8,7 +8,7 @@ library(gridExtra)
 
 
 setwd(
-  "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB"
+  "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB"
 )
 
 FLQ_Res_prev = 1 - 0.812963
@@ -33,7 +33,7 @@ probabilities <- read_excel("Cost_DALy_Prob_asumptions.xlsx", sheet = "Probabili
 
 # Probabilities in the tree for FLQ resistance and susceptibility
 DT_probabilities = read.csv(
-  "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/HM Output/sens_spec_calibrated_model.csv",
+  "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/HM Output/sens_spec_calibrated_model.csv",
   header =  TRUE
 )
 
@@ -385,7 +385,7 @@ DLM_prop_plot = ggplot(PMDT_performance_sus_res, aes(x = Threshold)) +
   theme(text = element_text(size = 18))
 # Save the final plot
 ggsave(
-  filename = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/DLM_proportion.png",
+  filename = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/DLM_proportion.png",
   plot = DLM_prop_plot,
   width = 14,
   height = 10
@@ -395,7 +395,7 @@ ggsave(
 # People classified FLQ Resistant by the model
 #Read dataset
 PM_performance <-
-  read.csv("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/HM Output/sens_spec_calibrated_model.csv", header = TRUE)%>%
+  read.csv("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/HM/HM Output/sens_spec_calibrated_model.csv", header = TRUE)%>%
   select(threshold, sensitivity, FPR, positive)
 
 PM_class_FLQres_plot = ggplot(PM_performance, aes(x = threshold)) +
@@ -411,7 +411,7 @@ PM_class_FLQres_plot = ggplot(PM_performance, aes(x = threshold)) +
   theme(text = element_text(size = 18))
 # Save the final plot
 ggsave(
-  filename = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/PM_class_FLQres_plot.png",
+  filename = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/PM_class_FLQres_plot.png",
   plot = PM_class_FLQres_plot,
   width = 14,
   height = 10
@@ -502,7 +502,7 @@ NMB_DALY_Cost_class_FLQ = grid.arrange(
 
 # Save the final plot
 ggsave(
-  filename = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_DALY_Cost_class_FLQ_plot.png",
+  filename = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_DALY_Cost_class_FLQ_plot.png",
   plot = NMB_DALY_Cost_class_FLQ,
   width = 14,
   height = 10
@@ -554,7 +554,7 @@ plot_NMB_FLQres_sus = ggplot(combined_data, aes(x = Threshold, y = NMB_avg_mean,
 
 
 ggsave(
-  filename = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_sus_res_ci.png",
+  filename = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_sus_res_ci.png",
   plot = plot_NMB_FLQres_sus,
   width = 15,
   height = 4
@@ -640,7 +640,7 @@ plot_nmb = ggplot(all_data_NMB, aes(x = Threshold, y = NMB, group = Classificati
 NMB_Cost_DALY_classification_plot = grid.arrange(plot_daly, plot_cost, plot_nmb, ncol = 1)
 
 ggsave(
-  filename = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_Cost_DALY_classification.png",
+  filename = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_Cost_DALY_classification.png",
   plot = NMB_Cost_DALY_classification_plot,
   width = 15,
   height = 10

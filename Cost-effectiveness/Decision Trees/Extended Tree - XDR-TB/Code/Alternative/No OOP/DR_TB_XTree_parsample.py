@@ -459,7 +459,7 @@ def dr_tb_dt_s(preliminary_daly_costs, DALY_individual_Moldova,  cost_sampled_pa
 
 
 if __name__ == "__main__":
-    base_path = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
+    base_path = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
     cost_effectiveness_path = base_path + 'Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Input/'
 
     # Read data
@@ -517,7 +517,7 @@ if __name__ == "__main__":
 
     # # PM + DT
     # # Create a dynamic file path
-    # file_path_NMB_DALY_Cost_SdTreat_PMDT_eachpt = f"/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/test/test.xlsx"
+    # file_path_NMB_DALY_Cost_SdTreat_PMDT_eachpt = f"/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/test/test.xlsx"
     # # Save the DataFrame to an Excel file
     # test.to_excel(
     #     file_path_NMB_DALY_Cost_SdTreat_PMDT_eachpt,
@@ -549,7 +549,7 @@ if __name__ == "__main__":
 
     # # PM + DT
     # # Create a dynamic file path
-    # file_path_NMB_DALY_Cost_SdTreat_DT_eachpt = f"/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/test/test2.xlsx"
+    # file_path_NMB_DALY_Cost_SdTreat_DT_eachpt = f"/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/test/test2.xlsx"
     # # Save the DataFrame to an Excel file
     # test2.to_excel(
     #     file_path_NMB_DALY_Cost_SdTreat_DT_eachpt,

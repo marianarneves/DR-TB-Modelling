@@ -4,67 +4,67 @@ library(tidyr)
 library(ggplot2)
 library(gridExtra)
 library(patchwork)
-source('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Analysis/DR_TB_PMDT_Analysis_Functions.R')
+source('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Analysis/DR_TB_PMDT_Analysis_Functions.R')
 
 
 #Prediction
-Prediction_PMDT_5 = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize5.xlsx')
-Prediction_PMDT_5_output_loc = ('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
+Prediction_PMDT_5 = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize5.xlsx')
+Prediction_PMDT_5_output_loc = ('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
 Prediction_PMDT_5_varwtp = read_output_tolist_varyingwtp(Prediction_PMDT_5_output_loc, "PMDT_","bootstrapping_samplesize5", 6)
 
 
 #Prediction
-Prediction_PMDT_100 = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize100.xlsx')
-Prediction_PMDT_100_output_loc = ('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
+Prediction_PMDT_100 = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize100.xlsx')
+Prediction_PMDT_100_output_loc = ('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
 Prediction_PMDT_100_varwtp = read_output_tolist_varyingwtp(Prediction_PMDT_100_output_loc, "PMDT_","bootstrapping_samplesize100", 6)
 
 #Prediction
-Prediction_PMDT_200 = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize200.xlsx')
-Prediction_PMDT_200_output_loc = ('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
+Prediction_PMDT_200 = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize200.xlsx')
+Prediction_PMDT_200_output_loc = ('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
 Prediction_PMDT_200_varwtp = read_output_tolist_varyingwtp(Prediction_PMDT_200_output_loc, "PMDT_","bootstrapping_samplesize200", 6)
 
 #Prediction
-Prediction_PMDT_300 = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize300.xlsx')
-Prediction_PMDT_300_output_loc = ('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
+Prediction_PMDT_300 = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize300.xlsx')
+Prediction_PMDT_300_output_loc = ('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
 Prediction_PMDT_300_varwtp = read_output_tolist_varyingwtp(Prediction_PMDT_300_output_loc, "PMDT_","bootstrapping_samplesize300", 6)
 
 
 #Prediction
-Prediction_PMDT_400 = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize400.xlsx')
-Prediction_PMDT_400_output_loc = ('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
+Prediction_PMDT_400 = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize400.xlsx')
+Prediction_PMDT_400_output_loc = ('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
 Prediction_PMDT_400_varwtp = read_output_tolist_varyingwtp(Prediction_PMDT_400_output_loc, "PMDT_","bootstrapping_samplesize400", 6)
 
 #Prediction
-Prediction_PMDT_500 = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize500.xlsx')
-Prediction_PMDT_500_output_loc = ('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
+Prediction_PMDT_500 = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize500.xlsx')
+Prediction_PMDT_500_output_loc = ('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
 Prediction_PMDT_500_varwtp = read_output_tolist_varyingwtp(Prediction_PMDT_400_output_loc, "PMDT_","bootstrapping_samplesize500", 6)
 
 #Prediction
-Prediction_PMDT_600 = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize600.xlsx')
-Prediction_PMDT_600_output_loc = ('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
+Prediction_PMDT_600 = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize600.xlsx')
+Prediction_PMDT_600_output_loc = ('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
 Prediction_PMDT_600_varwtp = read_output_tolist_varyingwtp(Prediction_PMDT_400_output_loc, "PMDT_","bootstrapping_samplesize600", 6)
 
 
 #Prediction
-Prediction_PMDT_700 = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize700.xlsx')
-Prediction_PMDT_700_output_loc = ('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
+Prediction_PMDT_700 = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize700.xlsx')
+Prediction_PMDT_700_output_loc = ('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
 Prediction_PMDT_700_varwtp = read_output_tolist_varyingwtp(Prediction_PMDT_400_output_loc, "PMDT_","bootstrapping_samplesize700", 6)
 
 #Prediction
-Prediction_PMDT_800 = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize800.xlsx')
-Prediction_PMDT_800_output_loc = ('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
+Prediction_PMDT_800 = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize800.xlsx')
+Prediction_PMDT_800_output_loc = ('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
 Prediction_PMDT_800_varwtp = read_output_tolist_varyingwtp(Prediction_PMDT_400_output_loc, "PMDT_","bootstrapping_samplesize800", 6)
 
 
 #Prediction
-Prediction_PMDT_900 = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize900.xlsx')
-Prediction_PMDT_900_output_loc = ('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
+Prediction_PMDT_900 = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize900.xlsx')
+Prediction_PMDT_900_output_loc = ('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
 Prediction_PMDT_900_varwtp = read_output_tolist_varyingwtp(Prediction_PMDT_400_output_loc, "PMDT_","bootstrapping_samplesize900", 6)
 
 
 #Prediction
-Prediction_PMDT_1000 = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize1000.xlsx')
-Prediction_PMDT_1000_output_loc = ('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
+Prediction_PMDT_1000 = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/PMDT_wtp2bootstrapping_samplesize1000.xlsx')
+Prediction_PMDT_1000_output_loc = ('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/1000 samples/')
 Prediction_PMDT_1000_varwtp = read_output_tolist_varyingwtp(Prediction_PMDT_400_output_loc, "PMDT_","bootstrapping_samplesize1000", 6)
 
 

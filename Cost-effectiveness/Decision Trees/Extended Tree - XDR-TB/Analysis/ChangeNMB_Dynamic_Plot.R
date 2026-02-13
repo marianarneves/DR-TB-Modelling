@@ -7,9 +7,9 @@ library(patchwork)
 library(purrr)
 library(gganimate)
 
-source('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Analysis/DR_TB_PMDT_Analysis_Functions.R')
+source('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Analysis/DR_TB_PMDT_Analysis_Functions.R')
 
-setwd("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Results Comparison/")
+setwd("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Results Comparison/")
 
 
 
@@ -84,7 +84,7 @@ compute_avg_nmb <- function(df, wtp_val) {
 
 
 # Read bootstrapped data
-Classification_PMDT_varwtp <- read_output_tolist_varyingwtp('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/', "PMDT_", "bootstrapping_samplesize200", 6)
+Classification_PMDT_varwtp <- read_output_tolist_varyingwtp('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/', "PMDT_", "bootstrapping_samplesize200", 6)
 
 # Split data by WTP and assign to global environment
 walk2(names(split(Classification_PMDT_varwtp$output_df, Classification_PMDT_varwtp$output_df$wtp)), split(Classification_PMDT_varwtp$output_df, Classification_PMDT_varwtp$output_df$wtp), ~ assign(paste0("PMDT_sampled_1000_", .x, "wtp"), .y, envir = .GlobalEnv))

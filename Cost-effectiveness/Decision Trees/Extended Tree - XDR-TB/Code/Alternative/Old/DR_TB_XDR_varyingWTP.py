@@ -6,7 +6,7 @@ import numpy as np
 from scipy.stats import t
 
 # Common directory paths
-base_path = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
+base_path = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
 hm_output_path = base_path + 'HM/HM Output/'
 cost_effectiveness_path = base_path + 'Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/'
 
@@ -431,4 +431,4 @@ data_DT_NMB_avg_eachind = {
 df_DT_NMB_avg_eachind = pd.DataFrame(data_DT_NMB_avg_eachind)
 
 # Save the DataFrame to an Excel file
-df_DT_NMB_avg_eachind.to_excel("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_sus_res_varWTP.xlsx", index=False)
+df_DT_NMB_avg_eachind.to_excel("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_sus_res_varWTP.xlsx", index=False)

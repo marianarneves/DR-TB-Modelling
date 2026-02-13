@@ -11,10 +11,10 @@ import statistics
 seed = 27
 
 # Specify the directory to save the plot
-save_dir = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/ML Models/ML Output/NN'/xcc
+save_dir = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/ML Models/ML Output/NN'/xcc
 
 # Load the dataset
-drtb_path = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_NN.csv"
+drtb_path = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_NN.csv"
 drtb = pd.read_csv(drtb_path)
 
 # Split target and covariates

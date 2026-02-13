@@ -11,7 +11,7 @@ library(tidyr)
 library(readxl)
 
 # Read the Excel file (first sheet by default)
-df <- read_excel('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/PM Boostrap/DTML_wtp2_bootstrapping_samplesize200.xlsx')
+df <- read_excel('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/PM Boostrap/DTML_wtp2_bootstrapping_samplesize200.xlsx')
 
 
 # 2. Summary function for avg NMB and CI
@@ -40,7 +40,7 @@ ggplot(DTML_nmb_avg, aes(x = Threshold, y = NMB_DTML)) +
 
 
 # Read the data
-Classification_PMDT <- read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/Input_V10/PMDT_wtp2bootstrapping_samplesize200.xlsx')
+Classification_PMDT <- read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/Input_V10/PMDT_wtp2bootstrapping_samplesize200.xlsx')
 
 PMDT_nmb_avg = compute_avg_nmb(Classification_PMDT)%>%
   rename_with(

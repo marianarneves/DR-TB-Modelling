@@ -7,7 +7,7 @@ library(ggplot2)
 library(gridExtra)
 
 setwd(
-  "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB"
+  "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB"
 )
 
 #Read dataset
@@ -101,7 +101,7 @@ plot_NMB_FLQres_sus_varyWTP = ggplot(NMB_avg_data_long_ic, aes(x = new_wtp, y = 
         plot.title=element_text(face="bold")) 
 
 ggsave(
-  filename = "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_sus_res_ci_varyWTP_withtitle.png",
+  filename = "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_sus_res_ci_varyWTP_withtitle.png",
   plot = plot_NMB_FLQres_sus_varyWTP,
   width = 22,
   height = 7

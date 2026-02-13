@@ -3,7 +3,7 @@ import numpy as np
 from scipy.stats import dirichlet
 
 # Common directory paths
-cost_effectiveness_path = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Input/'
+cost_effectiveness_path = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Input/'
 
 prob_data_prior = pd.read_excel(cost_effectiveness_path + 'Cost_DALY_Prob_asumptions_V4_test.xlsx', 'Probabilities')
 

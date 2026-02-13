@@ -5,17 +5,17 @@ library(ggplot2)
 library(gridExtra)
 library(patchwork)
 library(purrr)
-source('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/R01 TB/Papers/PMDT  RR_TB/Drafts/Figures/generateFiguresUtils.R')
+source('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/R01 TB/Papers/PMDT  RR_TB/Drafts/Figures/generateFiguresUtils.R')
 
 
-DTProb_nocal = read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM Bootstrap/Input_V10/DecisionTree_probs_alt.xlsx')
-DTProb_cal = read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/Input_V10/DecisionTree_probs_alt.xlsx')
+DTProb_nocal = read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM Bootstrap/Input_V10/DecisionTree_probs_alt.xlsx')
+DTProb_cal = read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/Input_V10/DecisionTree_probs_alt.xlsx')
 
 # =====================================================================
 # 3. Identify classification threshold(s) with maximum NMB - Beta Calibration
 # =====================================================================
 
-PIDEMc_cal_inputV10 = read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/Input_V10/PMDT_wtp2bootstrapping_samplesize200.xlsx')
+PIDEMc_cal_inputV10 = read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM Bootstrap/Input_V10/PMDT_wtp2bootstrapping_samplesize200.xlsx')
 
 Classification_wtp_avgs_cal <- compute_avg_nmb_ci(PIDEMc_cal_inputV10, NMB_SdTreat_DM, Threshold, wtp_val = "1")
 
@@ -32,7 +32,7 @@ PIDEMc_cal_maxthreshold = PIDEMc_cal_inputV10 %>%
 # 3. Identify classification threshold(s) with maximum NMB - No Calibration
 # =====================================================================
 
-PIDEMc_nocal_inputV10 = read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM Bootstrap/Input_V10/PMDT_wtp2bootstrapping_samplesize200.xlsx')
+PIDEMc_nocal_inputV10 = read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM Bootstrap/Input_V10/PMDT_wtp2bootstrapping_samplesize200.xlsx')
 
 Classification_wtp_avgs_nocal <- compute_avg_nmb_ci(PIDEMc_nocal_inputV10, NMB_SdTreat_DM, Threshold, wtp_val = "1")
 

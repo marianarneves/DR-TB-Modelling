@@ -16,8 +16,8 @@ if (rstudioapi::isAvailable()) {
 
 source("Calculate_sens_spec.R")
 
-predictions_bootstrap = read.csv('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_bootstrap_BetaCalibration.csv')
-predictions_mainpm = read.csv('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_MainPM_BetaCalibration.csv')
+predictions_bootstrap = read.csv('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_bootstrap_BetaCalibration.csv')
+predictions_mainpm = read.csv('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/LR_MainPM_BetaCalibration.csv')
 
 ########################################################
 #   Sensitivity and specificity - Optimism Correction  #
@@ -252,5 +252,5 @@ sensitivity_specificity_censored_plot <- ggplot(sens_spec_mainpred_averagedoptim
     legend.text = element_text(size = 16)
   )
 
-ggsave("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/Sens_Spec_mainpm_optimismcorrected_censored.png", plot = sensitivity_specificity_censored_plot, width = 10, height = 6)
+ggsave("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/Optimism Corrected/Sens_Spec_mainpm_optimismcorrected_censored.png", plot = sensitivity_specificity_censored_plot, width = 10, height = 6)
 

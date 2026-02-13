@@ -4,13 +4,13 @@ library(ggplot2)  # For data visualization
 library(readxl)
 library(stringr)
 
-setwd('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/Test')
+setwd('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/Test')
 
 # 1. Load Data
 # Reading a CSV file into a dataframe called `LR_bootstrap`. The `header = TRUE` argument ensures
 # that the first row of the CSV is treated as column names.
 LR_bootstrap = read.csv(
-  '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/LR_bootstrap_platt_beta_compare.csv',
+  '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/LR/Output/LR_bootstrap_platt_beta_compare.csv',
   header = TRUE
 )
 
@@ -116,7 +116,7 @@ ggsave(
 
 # 6. Probabilities in the DT
 
-DecisionTree_probs  = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/Optimism Correction/PM Sample/Original/DecisionTree_probs_alt.xlsx')
+DecisionTree_probs  = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/Optimism Correction/PM Sample/Original/DecisionTree_probs_alt.xlsx')
 
 #Comparing the probabilities calculated with traditional and alternative
 P_R_R = DecisionTree_probs %>%
@@ -196,7 +196,7 @@ P_S_S_bootstrap_trajectory_plot = ggplot(plot_data, aes(x = threshold, y = value
   theme(legend.position = "none")  # Exclude the legend
 
 ggsave(
-  filename = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/Optimism Correction/PM Sample/Original/P_S_S_bootstrap_trajectory_plot.png',
+  filename = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/Optimism Correction/PM Sample/Original/P_S_S_bootstrap_trajectory_plot.png',
   plot = P_S_S_bootstrap_trajectory_plot,
   width = 8,
   height = 6,

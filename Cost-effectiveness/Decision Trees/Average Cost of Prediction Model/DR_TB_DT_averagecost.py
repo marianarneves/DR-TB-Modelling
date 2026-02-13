@@ -70,7 +70,7 @@ D1_expected_costs = []
 # Initialize list to store weighted average costs
 weighted_average_costs = []
 
-csv_file="C:/Users/mrn29/OneDrive - Yale University/Yale/TB/Republic of Moldova data/sens_spec.csv"
+csv_file="C:/Users/mraniereneves/OneDrive - Yale University/Yale/TB/Republic of Moldova data/sens_spec.csv"
 
 with open(csv_file, 'r') as file:
     reader = csv.DictReader(file)
@@ -143,6 +143,6 @@ plt.grid(True)
 plt.axhline(y=no_pm, color='r', linestyle='--', label='y=10')
 
 
-plt.savefig(r'C:\Users\mrn29\OneDrive - Yale University\Yale\TB\Modelling\DR_TB_HM_averagecost.png')
+plt.savefig(r'C:\Users\mraniereneves\OneDrive - Yale University\Yale\TB\Modelling\DR_TB_HM_averagecost.png')
 
 plt.show()

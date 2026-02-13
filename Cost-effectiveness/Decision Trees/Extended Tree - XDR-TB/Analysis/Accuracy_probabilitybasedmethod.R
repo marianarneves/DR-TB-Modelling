@@ -43,6 +43,6 @@ print(all_cm_tables)
 # Save to CSV
 write.csv(
   all_cm_tables,
-  "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Output/cm_summary_by_wtp.csv",
+  "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Output/cm_summary_by_wtp.csv",
   row.names = FALSE
 )

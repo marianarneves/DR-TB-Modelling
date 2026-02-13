@@ -1,6 +1,6 @@
 library(readxl)
 
-boot_sens_spec = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Tests/Test PM bootstraping/Booststrap_Sens_Spec.xlsx')
+boot_sens_spec = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Tests/Test PM bootstraping/Booststrap_Sens_Spec.xlsx')
 
 # Assuming the dataset boot_sens_spec is already loaded
 

@@ -5,7 +5,7 @@ from DR_TB_Classes import *
 import numpy as np
 
 # Common directory paths
-base_path = '/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
+base_path = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/'
 hm_output_path = base_path + 'HM/HM Output/'
 cost_effectiveness_path = base_path + 'Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Input/'
 
@@ -170,7 +170,7 @@ data_DT_NMB = {
 # Convert the dictionary to a pandas DataFrame
 df_DT_NMB = pd.DataFrame(data_DT_NMB)
 # Save the DataFrame to an Excel file
-df_DT_NMB.to_excel("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Code/DR_TB_DT_MDRTree test/Test/DLM_NMB_old.xlsx", index=False)
+df_DT_NMB.to_excel("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Code/DR_TB_DT_MDRTree test/Test/DLM_NMB_old.xlsx", index=False)
 
 
 
@@ -742,7 +742,7 @@ plt.xlabel('Threshold')
 plt.ylabel('Change in NMB')
 plt.title('Threshold vs Change in NMB')
 plt.grid(True)
-plt.savefig(r'/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Figures/NMB_St_Treat_Opt_Treat_Individual.png')
+plt.savefig(r'/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Figures/NMB_St_Treat_Opt_Treat_Individual.png')
 plt.show()
 
 # # PM + DT performance
@@ -772,7 +772,7 @@ plt.show()
 # df_PMDT = pd.DataFrame(data_PMDT)
 #
 # # Save the DataFrame to an Excel file
-# df_PMDT.to_excel("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/PMDT_performance.xlsx", index=False)
+# df_PMDT.to_excel("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/PMDT_performance.xlsx", index=False)
 
 #
 # data_PMDT_ind_thre = {
@@ -797,7 +797,7 @@ plt.show()
 # df_PMDT_ind_thre = pd.DataFrame(data_PMDT_ind_thre)
 #
 # # Save the DataFrame to an Excel file
-# df_PMDT_ind_thre.to_excel("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/PMDT_individual_performance.xlsx", index=False)
+# df_PMDT_ind_thre.to_excel("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/PMDT_individual_performance.xlsx", index=False)
 #
 
 
@@ -821,7 +821,7 @@ plt.show()
 # df_DT_eachtree_costs = pd.DataFrame(data_DT_eachtree_costs)
 #
 # # Save the DataFrame to an Excel file
-# df_DT_eachtree_costs.to_excel("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/PMDT_cost_pos_neg_DT.xlsx", index=False)
+# df_DT_eachtree_costs.to_excel("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/PMDT_cost_pos_neg_DT.xlsx", index=False)
 #
 # # Cost and DALY depending on FLQ susceptibility
 #
@@ -914,7 +914,7 @@ plt.show()
 # df_DT_sus_res = pd.DataFrame(data_DT_sus_res)
 #
 # # Save the DataFrame to an Excel file
-# df_DT_sus_res.to_excel("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/PMDT_sus_res.xlsx", index=False)
+# df_DT_sus_res.to_excel("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/PMDT_sus_res.xlsx", index=False)
 #
 #
 # # NMB for resistant and susceptible people with Condidence intervals
@@ -935,7 +935,7 @@ plt.show()
 # df_DT_NMB_avg_r_eachind = pd.DataFrame(data_DT_NMB_avg_r_eachind)
 #
 # # Save the DataFrame to an Excel file
-# df_DT_NMB_avg_r_eachind.to_excel("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_avg_r_eachind.xlsx", index=False)
+# df_DT_NMB_avg_r_eachind.to_excel("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_avg_r_eachind.xlsx", index=False)
 #
 # # NMB for resistant and susceptible people with Condidence intervals
 # # Extracting all threshold elements
@@ -953,7 +953,7 @@ plt.show()
 # df_DT_NMB_avg_s_eachind = pd.DataFrame(data_DT_NMB_avg_s_eachind)
 #
 # # Save the DataFrame to an Excel file
-# df_DT_NMB_avg_s_eachind.to_excel("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_avg_s_eachind.xlsx", index=False)
+# df_DT_NMB_avg_s_eachind.to_excel("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_avg_s_eachind.xlsx", index=False)
 #
 # # NMB for resistant and susceptible people with Condidence intervals
 # # Extracting all threshold elements
@@ -969,4 +969,4 @@ plt.show()
 # df_DT_NMB_avg_eachind = pd.DataFrame(data_DT_NMB_avg_eachind)
 #
 # # Save the DataFrame to an Excel file
-# df_DT_NMB_avg_eachind.to_excel("/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_avg_eachind.xlsx", index=False)
+# df_DT_NMB_avg_eachind.to_excel("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/NMB_avg_eachind.xlsx", index=False)
