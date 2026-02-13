@@ -31,7 +31,7 @@ preliminary_daly_costs = preliminary_DALY.calculate_pre_daly_cost_s(
     wtp_value, par_samplesize
 )
 
-method = 'pred'
+method = 'class'
 pruning = 'pre'
 
 if method == 'pred':

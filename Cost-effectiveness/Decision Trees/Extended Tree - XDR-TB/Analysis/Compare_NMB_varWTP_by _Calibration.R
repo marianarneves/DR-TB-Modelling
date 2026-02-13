@@ -9,7 +9,7 @@ source('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/T
 
 setwd("/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Results Comparison/")
 
-# Example condition: only save if a variable 'should_save' is TRUE
+# only save if a variable 'should_save' is TRUE
 should_save <- FALSE  # change to TRUE to allow saving
 
 if (should_save) {

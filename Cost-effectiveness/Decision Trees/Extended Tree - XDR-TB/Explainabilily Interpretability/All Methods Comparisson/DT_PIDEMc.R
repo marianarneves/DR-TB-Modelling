@@ -37,14 +37,23 @@ setwd('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB
 source('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/Analysis/Rules_to_DT.R')
 
 
+# only save if a variable 'should_save' is TRUE
+should_save <- FALSE  # change to TRUE to allow saving
+
+if (should_save) {
+  ggsave("myplot.png", plot = p, width = 6, height = 4)
+} else {
+  message("ggsave skipped because condition not met.")
+}
+
 # -----------------------------
 # 3. Load Decision Tree rules and code
 # -----------------------------
-DT_PIDEMc_tree_data <- '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/PM Boostrap/Pre Pruning/MaxTreeDepth 5/DT_rules_output_WTP2_maxNMB_acc_DTML.txt'
+DT_PIDEMc_tree_data <- '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/PM Boostrap/Pre Pruning/MaxTreeDepth 5/DT_rules_output_WTP2_maxNMB_PIDEMc.txt'
 
 DT_PIDEMc_tree_plot = plot_decision_tree(DT_PIDEMc_tree_data)
 
-export_graph(DT_PIDEMc_tree_plot, file_name = "DT_PIDEMc_tree_plot.png", file_type = "png")
+export_graph(DT_PIDEMc_tree_plot, file_name = "DT_PIDEMc_maxNMB_tree_plot.png", file_type = "png")
 
 # =============================================================
 # 2. Import Data
@@ -303,7 +312,7 @@ PIDEMc_Acc_by_classthreshold = ggplot(PMDT_DTML_acc, aes(x = Threshold, y = accu
     plot.margin = margin(12, 14, 12, 14)
   )
 
-ggsave('DT_PIDEMc_accuracy_by_classthreshold.png', DT_PIDEMc_Acc_by_classthreshold, width = 12, height = 6, dpi = 300)
+ggsave('DT_PIDEMc_accuracy_by_classthreshold.png', PIDEMc_Acc_by_classthreshold, width = 12, height = 6, dpi = 300)
 
 
 # Accuracy plot
@@ -557,15 +566,14 @@ handlers("txtprogressbar")
 metrics_by_threshold <- with_progress({
   p <- progressor(along = thresholds)
   map_dfr(thresholds, ~ compute_metrics_safe(.x, progress = p))
-}) %>% 
-  tibble(
-    data.frame(
-      Threshold =1,
-      accuracy = 1,
-      NMB = 0)
-  )
-
-
+})
+# %>% 
+#   tibble(
+#     data.frame(
+#       Threshold =1,
+#       accuracy = 1,
+#       NMB = 0)
+#   )
 
 
 #---------------------------------------------------------
@@ -704,13 +712,14 @@ varimp_PIDEMc_maxNMB <- data.frame(
     var == "prevalence_0" ~ "Reside in District with Prevalence < 10%",
     var == "prevalence_1" ~ "Reside in District with Prevalence < 20% and > 10%",
     var == "prevalence_2" ~ "Reside in District with Prevalence >20%",
-    TRUE ~ NA_character_
+    TRUE ~ var
   )
   )
 
 # Plot top 10 variables
 top10_PIDEMc_maxNMB_plot <-  ggplot(
-  top10,
+  varimp_PIDEMc_maxNMB %>%
+    slice(1:10),
   aes(x = rel.importance,
       y = reorder(var_name, rel.importance),
       fill = rel.importance)

@@ -1,25 +1,31 @@
-|--- Reside in District with Prevalence >20% <= 0.50
+|--- Prevalence: Reside in District with Prevalence >20% <= 0.50
 |   |--- Age <= 12.50
 |   |   |--- class: 1
 |   |--- Age >  12.50
-|   |   |--- class: 0
-|--- Reside in District with Prevalence >20% >  0.50
-|   |--- TB Return from Default <= 0.50
-|   |   |--- Female <= 0.50
-|   |   |   |--- Initiated Treatment Abroad <= 0.50
-|   |   |   |   |--- class: 0
-|   |   |   |--- Initiated Treatment Abroad >  0.50
+|   |   |--- TB Type: Treatment failure <= 0.50
+|   |   |   |--- class: 0
+|   |   |--- TB Type: Treatment failure >  0.50
+|   |   |   |--- Incarceration: Incarceration missing  <= 0.50
 |   |   |   |   |--- class: 1
-|   |   |--- Female >  0.50
-|   |   |   |--- Age <= 52.50
-|   |   |   |   |--- class: 1
-|   |   |   |--- Age >  52.50
+|   |   |   |--- Incarceration: Incarceration missing  >  0.50
 |   |   |   |   |--- class: 0
-|   |--- TB Return from Default >  0.50
-|   |   |--- Age <= 45.00
-|   |   |   |--- Homeless_missing <= 0.50
-|   |   |   |   |--- class: 1
-|   |   |   |--- Homeless_missing >  0.50
+|--- Prevalence: Reside in District with Prevalence >20% >  0.50
+|   |--- TB Type: Return from default <= 0.50
+|   |   |--- Living_condition_missing <= 0.50
+|   |   |   |--- TB Type: Initiated treatment abroad <= 0.50
 |   |   |   |   |--- class: 0
-|   |   |--- Age >  45.00
+|   |   |   |--- TB Type: Initiated treatment abroad >  0.50
+|   |   |   |   |--- class: 1
+|   |   |--- Living_condition_missing >  0.50
+|   |   |   |--- Age <= 53.00
+|   |   |   |   |--- class: 1
+|   |   |   |--- Age >  53.00
+|   |   |   |   |--- class: 0
+|   |--- TB Type: Return from default >  0.50
+|   |   |--- Age <= 48.00
+|   |   |   |--- Homeless: Homeless missing <= 0.50
+|   |   |   |   |--- class: 1
+|   |   |   |--- Homeless: Homeless missing >  0.50
+|   |   |   |   |--- class: 0
+|   |   |--- Age >  48.00
 |   |   |   |--- class: 0

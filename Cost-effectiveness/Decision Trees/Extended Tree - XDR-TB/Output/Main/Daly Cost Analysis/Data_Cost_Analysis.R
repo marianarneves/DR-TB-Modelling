@@ -14,12 +14,12 @@ set.seed(1)
 
 # Load the Moldova dataset
 data_path <-
-  "/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_LR_Augumented.csv"
+  "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/Republic of Moldova data/DATA_tb_moldova_LR_Augumented.csv"
 moldova_data <- read.csv(data_path)
 moldova_data$Person = seq(1:dim(moldova_data)[1])
 
 
-DalyResults = readxl::read_xlsx('/Users/mrn29/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/Daly Cost Analysis/DalyResults_200samples.xlsx')
+DalyResults = readxl::read_xlsx('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/Daly Cost Analysis/DalyResults_200samples.xlsx')
 
 DalyResults_Moldova = DalyResults %>%
   left_join(moldova_data %>%
