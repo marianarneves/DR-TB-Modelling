@@ -1,0 +1,19 @@
+|--- TB Type: Treatment failure <= 0.50
+|   |--- TB Type: Initiated treatment abroad <= 0.50
+|   |   |--- Age <= 16.50
+|   |   |   |--- Positive Microscopy <= 0.50
+|   |   |   |   |--- class: 1
+|   |   |   |--- Positive Microscopy >  0.50
+|   |   |   |   |--- class: 0
+|   |   |--- Age >  16.50
+|   |   |   |--- class: 0
+|   |--- TB Type: Initiated treatment abroad >  0.50
+|   |   |--- Age <= 40.00
+|   |   |   |--- class: 0
+|   |   |--- Age >  40.00
+|   |   |   |--- class: 1
+|--- TB Type: Treatment failure >  0.50
+|   |--- Prevalence: Reside in District with Prevalence >20% <= 0.50
+|   |   |--- class: 0
+|   |--- Prevalence: Reside in District with Prevalence >20% >  0.50
+|   |   |--- class: 1

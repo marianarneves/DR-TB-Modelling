@@ -8,7 +8,14 @@ par_sampler = ParameterSampler(FLQ_Res_prev, prob_data_prior, cost_data_prior, d
                                sideeffectlength_data_prior, nsamples=par_samplesize)
 
 preliminary_DALY = Preliminary_DALY(mainpm_pred_data, LE_data)
-DALY_individual_Moldova = preliminary_DALY.compute_daly_individual()
+
+# DALY_individual_Moldova = [
+#     0 if age > LE_2019_Moldova else LE_2019_Moldova - age
+#     for age in mainpm_pred_data['age']
+# ]
+
+print(DALY_individual_Moldova)
+#DALY_individual_Moldova = preliminary_DALY.compute_daly_individual()
 
 pm_performance = PMPerformance(mainpm_pred_data, booststrap_pred_data, par_sampler)
 
@@ -58,7 +65,7 @@ for wtp_value in wtp:
 
     start_time_wtp = time.time()
 
-    drtb_instance = DRTuberculosisDT(par_sampler, DALY_individual_Moldova, pm_performance, mainpm_pred_data, diseaseprev_sampled_par, prob_sampled_par, cost_sampled_par, dalyweight_sampled_par, dalylength_sampled_par, sideeffectdaly_sampled_par, sideeffectfreq_sampled_par, sideeffectlength_sampled_par, par_samplesize, wtp_value)
+    drtb_instance = DRTuberculosisDT(par_sampler, DALY_individual_Moldova, pm_performance, mainpm_pred_data, diseaseprev_sampled_par, prob_sampled_par, cost_sampled_par, dalyweight_sampled_par, dalylength_sampled_par, sideeffectdaly_sampled_par, sideeffectfreq_sampled_par, sideeffectlength_sampled_par, par_samplesize, wtp_value,random_seed)
 
     ############ Preliminary Costs and DALY Calculation ############
     # Calculated expected costs and DALYs for each treatment depending on FLQ susceptibility
@@ -85,8 +92,8 @@ for wtp_value in wtp:
     # file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Platt Calibration/PM input Only/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
 
     # PM input Only - Beta Calibration
-    PMDT_sampled = drtb_instance.dr_tb_pmdt_predonly(DALY_individual_Moldova, preliminary_daly_costs)
-    file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM input Only/Input_V10/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
+    # PMDT_sampled = drtb_instance.dr_tb_pmdt_predonly(DALY_individual_Moldova, preliminary_daly_costs)
+    # file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM input Only/Input_V10/' + f'PMDT_wtp{i}bootstrapping_samplesize200_modLE.xlsx'
 
     # PMDT - Platt Calibration- Method 632
     # PMDT_sampled = drtb_instance.dr_tb_pmdt_s_opt(allthresholds, DALY_individual_Moldova, preliminary_daly_costs, corr
@@ -115,6 +122,10 @@ for wtp_value in wtp:
     # PM input Only - No Calibration
     # PMDT_sampled = drtb_instance.dr_tb_pmdt_predonly(DALY_individual_Moldova, preliminary_daly_costs)
     # file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM input Only/Input_V10/' + f'PMDT_wtp{i}bootstrapping_samplesize200.xlsx'
+
+    # PM input Only - No Calibration
+    # PMDT_sampled = drtb_instance.dr_tb_pmdt_predonly(DALY_individual_Moldova, preliminary_daly_costs)
+    # file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM input Only/Input_V10/ModLE/' + f'PMDT_wtp{i}bootstrapping_samplesize200_ModLE.xlsx'
 
     # # PM without DM - No Calibration
     # PMDT_sampled = drtb_instance.dr_tb_pm_s(allthresholds, DALY_individual_Moldova, preliminary_daly_costs)

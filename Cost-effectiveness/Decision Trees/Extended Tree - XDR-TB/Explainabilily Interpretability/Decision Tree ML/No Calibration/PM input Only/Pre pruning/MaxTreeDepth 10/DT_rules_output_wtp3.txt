@@ -1,0 +1,88 @@
+|--- TB Type: Treatment failure <= 0.50
+|   |--- Prevalence: Reside in District with Prevalence >20% <= 0.50
+|   |   |--- Age <= 12.50
+|   |   |   |--- class: 1
+|   |   |--- Age >  12.50
+|   |   |   |--- Age <= 18.50
+|   |   |   |   |--- TB Type: Return from default <= 0.50
+|   |   |   |   |   |--- class: 0
+|   |   |   |   |--- TB Type: Return from default >  0.50
+|   |   |   |   |   |--- class: 1
+|   |   |   |--- Age >  18.50
+|   |   |   |   |--- class: 0
+|   |--- Prevalence: Reside in District with Prevalence >20% >  0.50
+|   |   |--- Sex: Female <= 0.50
+|   |   |   |--- TB Type: Return from default <= 0.50
+|   |   |   |   |--- TB Type: Initiated treatment abroad <= 0.50
+|   |   |   |   |   |--- Age <= 18.50
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- Age >  18.50
+|   |   |   |   |   |   |--- Outside Moldova: Resided outside of Moldova <= 0.50
+|   |   |   |   |   |   |   |--- Living_condition_missing <= 0.50
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- Living_condition_missing >  0.50
+|   |   |   |   |   |   |   |   |--- Homeless: Homeless <= 0.50
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- Homeless: Homeless >  0.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- Outside Moldova: Resided outside of Moldova >  0.50
+|   |   |   |   |   |   |   |--- Urban: Urban area <= 0.50
+|   |   |   |   |   |   |   |   |--- Education: Specialized secondary education <= 0.50
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- Education: Specialized secondary education >  0.50
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- Urban: Urban area >  0.50
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |--- TB Type: Initiated treatment abroad >  0.50
+|   |   |   |   |   |--- class: 1
+|   |   |   |--- TB Type: Return from default >  0.50
+|   |   |   |   |--- Family size <= 1.50
+|   |   |   |   |   |--- Age <= 54.00
+|   |   |   |   |   |   |--- Age <= 30.50
+|   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |--- Age >  30.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- Age >  54.00
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |--- Family size >  1.50
+|   |   |   |   |   |--- Living_condition_missing <= 0.50
+|   |   |   |   |   |   |--- Family size <= 4.50
+|   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |--- Family size >  4.50
+|   |   |   |   |   |   |   |--- Outside Moldova: Resided outside of Moldova <= 0.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- Outside Moldova: Resided outside of Moldova >  0.50
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- Living_condition_missing >  0.50
+|   |   |   |   |   |   |--- class: 1
+|   |   |--- Sex: Female >  0.50
+|   |   |   |--- Age <= 52.50
+|   |   |   |   |--- TB Type: Relapse <= 0.50
+|   |   |   |   |   |--- Family size <= 5.50
+|   |   |   |   |   |   |--- TB_location_bin_Pulmonary <= 0.50
+|   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |--- TB_location_bin_Pulmonary >  0.50
+|   |   |   |   |   |   |   |--- Microscopy_missing <= 0.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- Microscopy_missing >  0.50
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- Family size >  5.50
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |--- TB Type: Relapse >  0.50
+|   |   |   |   |   |--- class: 0
+|   |   |   |--- Age >  52.50
+|   |   |   |   |--- Education: Secondary education <= 0.50
+|   |   |   |   |   |--- class: 0
+|   |   |   |   |--- Education: Secondary education >  0.50
+|   |   |   |   |   |--- Urban: Urban area <= 0.50
+|   |   |   |   |   |   |--- Occupation: Unemployed <= 0.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- Occupation: Unemployed >  0.50
+|   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- Urban: Urban area >  0.50
+|   |   |   |   |   |   |--- class: 0
+|--- TB Type: Treatment failure >  0.50
+|   |--- prevalence_NA <= 0.50
+|   |   |--- class: 1
+|   |--- prevalence_NA >  0.50
+|   |   |--- class: 0

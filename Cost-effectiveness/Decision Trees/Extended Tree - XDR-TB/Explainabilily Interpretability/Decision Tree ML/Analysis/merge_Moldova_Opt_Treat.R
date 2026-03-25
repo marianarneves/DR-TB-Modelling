@@ -8,6 +8,7 @@ library(ggplot2)
 library(rms)
 library(betacal)
 library(tidyr)
+library(readxl)
 source('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Analysis/DR_TB_PMDT_Analysis_Functions.R')
 
 set.seed(1)
@@ -51,8 +52,8 @@ moldova_data$Pt_id = seq(1:dim(moldova_data)[1])
 #       Probability Based Method       #
 ########################################
 
-output_loc = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/Beta Calibration/PM input Only/'
-Prediction_PMDT_varwtp <- read_output_tolist_varyingwtp(output_loc, "PMDT_", "bootstrapping_samplesize200", 6)
+output_loc = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/LR/No Calibration/PM input Only/Input_V10/ModLE/'
+Prediction_PMDT_varwtp <- read_output_tolist_varyingwtp(output_loc, "PMDT_", "bootstrapping_samplesize200_ModLE", 6)
 
 # Apply and save each to a CSV file
 for (i in 1:6) {
@@ -61,7 +62,7 @@ for (i in 1:6) {
   write.csv(
     df_i,
     file = paste0(
-      "/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Decision Tree ML/PM input Only/moldova_data_opt_treat_prediction_allthresholds_wtp",
+      '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/PM input Only/Input/ModLE/Moldova_data_opt_treat_prediction_allthresholds_wtp',
       i, ".csv"
     ),
     row.names = FALSE

@@ -7,7 +7,7 @@ from PM_Performance_class import *
 
 class DRTuberculosisDT:
     def __init__(self, par_sampler, DALY_individual_Moldova, pm_performance, pred_data, diseaseprev_sampled,
-                 prob_sampled_par, cost_sampled_par, dalyweight_sampled_par, dalylength_sampled_par, sideeffectdaly_sampled_par, sideeffectfreq_sampled_par, sideeffectlength_sampled_par, par_samplesize, wtp):
+                 prob_sampled_par, cost_sampled_par, dalyweight_sampled_par, dalylength_sampled_par, sideeffectdaly_sampled_par, sideeffectfreq_sampled_par, sideeffectlength_sampled_par, par_samplesize, wtp, random_seed=5 ):
         self.par_sampler = par_sampler
         self.DALY_individual_Moldova = DALY_individual_Moldova
         self.pm_performance = pm_performance
@@ -22,6 +22,7 @@ class DRTuberculosisDT:
         self.sideeffectlength_sampled_par = sideeffectlength_sampled_par
         self.par_samplesize = par_samplesize
         self.wtp = wtp
+        self.random_seed = random_seed
 
     def calculate_sample_averages(self, dataframe, excluded_cols, index_cols):
         include_columns = [col for col in dataframe.columns if col not in excluded_cols and col not in index_cols]
@@ -565,6 +566,7 @@ class DRTuberculosisDT:
 
             for i, (DALY_Death, mainpm_prediction, obs) in enumerate(
                     zip(DALY_individual_Moldova, self.pred_data['predicted'], self.pred_data['observed'])):
+                np.random.seed(self.random_seed)
                 optimal_treat = self.optimal_treat_pmdt_sample(i, mainpm_prediction, threshold, self.wtp,
                                                                decisiontree_prob_df)
 
@@ -599,6 +601,7 @@ class DRTuberculosisDT:
 
             for i, (DALY_Death, mainpm_prediction, obs) in enumerate(
                     zip(DALY_individual_Moldova, self.pred_data['predicted'], self.pred_data['observed'])):
+                np.random.seed(self.random_seed)
                 optimal_treat = self.optimal_treat_pmdt_sample(i, mainpm_prediction, threshold, self.wtp,
                                                                decisiontree_prob_df)
 
@@ -627,6 +630,7 @@ class DRTuberculosisDT:
 
         for i, (DALY_Death, mainpm_prediction, obs) in enumerate(
                 zip(DALY_individual_Moldova, self.pred_data['predicted'], self.pred_data['observed'])):
+            np.random.seed(self.random_seed)
             optimal_treat = self.optimal_treat_pmdt_predonly(i, mainpm_prediction, self.wtp)
 
             FLQ_status = 'FLQ Resistant' if obs == 1 else 'FLQ Susceptible'
@@ -655,6 +659,7 @@ class DRTuberculosisDT:
 
             for i, (DALY_Death, mainpm_prediction, obs) in enumerate(
                     zip(DALY_individual_Moldova, self.pred_data['predicted'], self.pred_data['observed'])):
+                np.random.seed(self.random_seed)
                 optimal_treat = self.optimal_treat_pm(i, mainpm_prediction, threshold)
 
                 FLQ_status = 'FLQ Resistant' if obs == 1 else 'FLQ Susceptible'
@@ -679,6 +684,7 @@ class DRTuberculosisDT:
 
         for i, (DALY_Death, obs) in enumerate(
                 zip(DALY_individual_Moldova, self.pred_data['observed'])):
+            np.random.seed(self.random_seed)
             optimal_treat = self.optimal_treat_dt_sample(i, self.wtp)
 
             FLQ_status = 'FLQ Resistant' if obs == 1 else 'FLQ Susceptible'

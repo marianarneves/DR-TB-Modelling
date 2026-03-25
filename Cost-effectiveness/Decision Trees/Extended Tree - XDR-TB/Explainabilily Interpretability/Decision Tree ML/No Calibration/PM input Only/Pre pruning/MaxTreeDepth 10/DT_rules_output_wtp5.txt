@@ -1,0 +1,79 @@
+|--- Prevalence: Reside in District with Prevalence >20% <= 0.50
+|   |--- Age <= 12.50
+|   |   |--- class: 1
+|   |--- Age >  12.50
+|   |   |--- TB Type: Treatment failure <= 0.50
+|   |   |   |--- Age <= 18.50
+|   |   |   |   |--- TB Type: Return from default <= 0.50
+|   |   |   |   |   |--- class: 0
+|   |   |   |   |--- TB Type: Return from default >  0.50
+|   |   |   |   |   |--- class: 1
+|   |   |   |--- Age >  18.50
+|   |   |   |   |--- Education: No Education <= 0.50
+|   |   |   |   |   |--- class: 0
+|   |   |   |   |--- Education: No Education >  0.50
+|   |   |   |   |   |--- TB Type: Return from default <= 0.50
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- TB Type: Return from default >  0.50
+|   |   |   |   |   |   |--- class: 1
+|   |   |--- TB Type: Treatment failure >  0.50
+|   |   |   |--- Homeless: Homeless missing <= 0.50
+|   |   |   |   |--- class: 0
+|   |   |   |--- Homeless: Homeless missing >  0.50
+|   |   |   |   |--- class: 1
+|--- Prevalence: Reside in District with Prevalence >20% >  0.50
+|   |--- TB Type: Return from default <= 0.50
+|   |   |--- Sex: Female <= 0.50
+|   |   |   |--- TB Type: Treatment failure <= 0.50
+|   |   |   |   |--- TB Type: Initiated treatment abroad <= 0.50
+|   |   |   |   |   |--- Occupation: Student <= 0.50
+|   |   |   |   |   |   |--- Living_condition_missing <= 0.50
+|   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |--- Living_condition_missing >  0.50
+|   |   |   |   |   |   |   |--- Homeless: Homeless <= 0.50
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- Homeless: Homeless >  0.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- Occupation: Student >  0.50
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- TB Type: Initiated treatment abroad >  0.50
+|   |   |   |   |   |--- class: 1
+|   |   |   |--- TB Type: Treatment failure >  0.50
+|   |   |   |   |--- class: 1
+|   |   |--- Sex: Female >  0.50
+|   |   |   |--- TB Type: Relapse <= 0.50
+|   |   |   |   |--- Age <= 60.50
+|   |   |   |   |   |--- Family size <= 5.50
+|   |   |   |   |   |   |--- Age <= 43.50
+|   |   |   |   |   |   |   |--- TB_location_bin_Pulmonary <= 0.50
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- TB_location_bin_Pulmonary >  0.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- Age >  43.50
+|   |   |   |   |   |   |   |--- Living_condition_missing <= 0.50
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- Living_condition_missing >  0.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- Family size >  5.50
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |--- Age >  60.50
+|   |   |   |   |   |--- class: 0
+|   |   |   |--- TB Type: Relapse >  0.50
+|   |   |   |   |--- class: 0
+|   |--- TB Type: Return from default >  0.50
+|   |   |--- Homeless: Homeless missing <= 0.50
+|   |   |   |--- Age <= 48.00
+|   |   |   |   |--- class: 1
+|   |   |   |--- Age >  48.00
+|   |   |   |   |--- Homeless: Homeless <= 0.50
+|   |   |   |   |   |--- class: 0
+|   |   |   |   |--- Homeless: Homeless >  0.50
+|   |   |   |   |   |--- Positive Microscopy <= 0.50
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- Positive Microscopy >  0.50
+|   |   |   |   |   |   |--- Outside Moldova: Resided outside of Moldova <= 0.50
+|   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |--- Outside Moldova: Resided outside of Moldova >  0.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |--- Homeless: Homeless missing >  0.50
+|   |   |   |--- class: 0

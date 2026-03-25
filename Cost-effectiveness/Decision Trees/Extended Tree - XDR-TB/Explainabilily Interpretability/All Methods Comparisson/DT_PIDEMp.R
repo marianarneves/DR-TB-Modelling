@@ -615,7 +615,7 @@ DT::datatable(coef_df, options = list(pageLength = 10))
 X_all <- fit_rulefit$modmat   # n x p matrix of rules + linear terms
 
 # Select a single patient (e.g., row 150)
-x_patient <- X_all[150, , drop = FALSE]
+x_patient <- X_all[38, , drop = FALSE]
 
 # Compute contributions using sourced function
 patient_fit <- compute_contributions(x_patient, coef_df)

@@ -2,6 +2,7 @@ library(readxl)
 library(dplyr)
 library(ggplot2)
 library(scales)
+library(tidyverse)
 
 expand_ageband <- function(ageband) {
   ageband <- str_trim(ageband)

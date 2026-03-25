@@ -1,0 +1,13 @@
+|--- TB Type: Treatment failure <= 0.50
+|   |--- Age <= 16.50
+|   |   |--- class: 1
+|   |--- Age >  16.50
+|   |   |--- TB Type: Initiated treatment abroad <= 0.50
+|   |   |   |--- class: 0
+|   |   |--- TB Type: Initiated treatment abroad >  0.50
+|   |   |   |--- class: 1
+|--- TB Type: Treatment failure >  0.50
+|   |--- Age <= 62.50
+|   |   |--- class: 1
+|   |--- Age >  62.50
+|   |   |--- class: 0

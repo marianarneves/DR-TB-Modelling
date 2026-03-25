@@ -4,17 +4,18 @@ from DR_TB_XTree import *
 GDP_moldova = 5714.43
 FLQ_Res_prev = 1 - 0.812963
 
+
+## YLL_LE
+externaldata = pd.read_csv('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/DT Only/Input_V10/Test age x NMB/PIDEMp/YLLcontinuous_input.csv')
+
+
 #Testing the relationship between age and optimal treatment
 #YLL Continuous
 # DALY_individual_Moldova = list(range(101)) * 2
 # YLL_LE
 DALY_individual_Moldova = [
-    6.04, 7.66, 10.08, 13.51, 16.87, 20.92, 25.15, 29.63, 34.19,
-    38.86, 43.66, 48.53, 53.45, 58.38, 63.31, 68.23, 73.16,
-    77.02, 77.12,
-    6.52, 7.28, 8.84, 11.78, 13.73, 16.63, 20.01, 23.77, 27.78,
-    32.03, 36.55, 41.22, 45.98, 50.78, 55.62, 60.52, 65.44,
-    69.26, 69.29
+    0 if age > LE_2019_Moldova else LE_2019_Moldova - age
+    for age in externaldata['age']
 ]
 
 preliminary_DALY = Preliminary_DALY(mainpm_pred_data, LE_data)
@@ -63,10 +64,6 @@ allthresholds = pd.DataFrame({'threshold': threshold_values})
 #YLL Continuous inputdata
 #externaldata = pd.read_csv('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/DT Only/Input_V10/Test age x NMB/PIDEMc/MainPM_dummy_YLL_pos_neg.csv')
 
-## YLL_LE
-externaldata = pd.read_csv('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/DT Only/Input_V10/Test age x NMB/PIDEMp/YLLLE_input.csv')
-
-
 drtb_instance = DRTuberculosisDT(par_sampler, DALY_individual_Moldova, pm_performance, externaldata, diseaseprev_sampled_par, prob_sampled_par, cost_sampled_par, dalyweight_sampled_par, dalylength_sampled_par, sideeffectdaly_sampled_par, sideeffectfreq_sampled_par, sideeffectlength_sampled_par, par_samplesize, wtp_value)
 
 ############ Preliminary Costs and DALY Calculation ############
@@ -88,7 +85,7 @@ for col in PMDT_sampled.columns:
     print(col)
 
 # # Export test file
-file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/DT Only/Input_V10/Test age x NMB/PIDEMp/' + f'PIDEMp_YLLLE_test_output.xlsx'
+file_path_PMDT_sampled = '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Output/Main/DT Only/Input_V10/Test age x NMB/PIDEMp/' + f'PIDEMp_YLLcontinuous_test_output_2.xlsx'
 # Save the DataFrame to an Excel file
 PMDT_sampled.to_excel(
     file_path_PMDT_sampled,
