@@ -31,8 +31,8 @@ plot_decision_tree <- function(tree_path) {
   # --- Replace leaf classes with FQ / CFZ ---
   # Replace textual leaf labels "class: 0"/"class: 1" with short class tags "FQ"/"CFZ".
   # This makes leaf node labels compact and (in your domain) more meaningful.
-  lines <- gsub("class: 0", "FQ", lines)
-  lines <- gsub("class: 1", "CFZ", lines)
+  lines <- gsub("class: 0", "BPaLM", lines)
+  lines <- gsub("class: 1", "BPaLC", lines)
   
   # --- Container for nodes at each depth ---
   # This list holds the most recently created node at each depth level.

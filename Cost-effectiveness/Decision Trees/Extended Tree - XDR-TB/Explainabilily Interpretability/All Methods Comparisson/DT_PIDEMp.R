@@ -57,7 +57,7 @@ source('/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/T
 # =============================================================
 # 3. Decision Tree: Load and Visualize
 # =============================================================
-DT_PIDEMp_tree_data <- '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/PM input Only/Pre pruning/MaxTreeDepth 5/DT_rules_output_wtp2.txt'
+DT_PIDEMp_tree_data <- '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/Beta Calibration/PM input Only/Pre pruning/MaxTreeDepth 5/DT_rules_output_wtp2.txt'
 
 # Generate plot from rules
 DT_PIDEMp_tree_plot <- plot_decision_tree(DT_PIDEMp_tree_data)
@@ -68,7 +68,7 @@ export_graph(DT_PIDEMp_tree_plot, file_name = "DT_PIDEMp_tree_plot.png", file_ty
 # =============================================================
 # 4. Decision Tree: Accuracy & MCC
 # =============================================================
-DT_output_path <- '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/PM input Only/Pre pruning/MaxTreeDepth 5/DTML_wtp2_bootstrapping_PIDEMp.xlsx'
+DT_output_path <- '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/Beta Calibration/PM input Only/Pre pruning/MaxTreeDepth 5/DTML_wtp2_bootstrapping_PIDEMp.xlsx'
 
 # Read bootstrapped DT predictions
 PIDEMp_DT_output <- read.xlsx(DT_output_path)
@@ -88,7 +88,7 @@ print(DT_mcc_value)
 # =============================================================
 # 5. RuleFit: Load Data and Prepare
 # =============================================================
-PIDEMp_input_path <- '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/PM input Only/Input/moldova_data_opt_treat_prediction_allthresholds_wtp2.csv'
+PIDEMp_input_path <- '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/Beta Calibration/PM input Only/Input/LE by Age and Sex/moldova_data_opt_treat_prediction_allthresholds_wtp2.csv'
 
 PIDEMp_PMDT <- read.csv(PIDEMp_input_path)
 
@@ -259,7 +259,7 @@ ggsave('accuracy_mcc_plots.png', accuracy_mcc_plots, width = 12, height = 6, dpi
 # 11. Variable Importance Comparison: DT vs RuleFit
 # =============================================================
 # Load Decision Tree variable importance
-DT_var_importance_path <- '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/PM input Only/Pre pruning/MaxTreeDepth 5/DT_feature_importance_wtp2.csv'
+DT_var_importance_path <- '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/Beta Calibration/PM input Only/Pre pruning/MaxTreeDepth 5/DT_feature_importance_wtp2.csv'
 
 DT_var_importance <- read.csv(DT_var_importance_path)
 
@@ -447,7 +447,7 @@ ggsave('DT_RuleFit_PIDEMc_NMB_by_classthreshold.png', DT_RuleFit_PIDEMc_NMB_by_c
 # =============================================================
 # 2. Load the DT feature importance file
 # =============================================================
-DT_var_importance_path <- '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/PM input Only/Pre pruning/MaxTreeDepth 5/DT_feature_importance_wtp2.csv'
+DT_var_importance_path <- '/Users/mraniereneves/Library/CloudStorage/OneDrive-YaleUniversity/Yale/TB/DR-TB-Modelling/Cost-effectiveness/Decision Trees/Extended Tree - XDR-TB/Explainabilily Interpretability/Decision Tree ML/Beta Calibration/PM input Only/Pre pruning/MaxTreeDepth 5/DT_feature_importance_wtp2.csv'
 
 DT_var_importance <- read.csv(DT_var_importance_path, stringsAsFactors = FALSE)
 

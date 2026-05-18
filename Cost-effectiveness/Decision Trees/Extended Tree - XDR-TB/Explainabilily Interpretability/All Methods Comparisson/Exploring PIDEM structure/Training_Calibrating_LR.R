@@ -61,6 +61,32 @@ print(best_lambda)
 # Coefficients at the best lambda (now comparable across predictors)
 coef(ridge_model, s = best_lambda)
 
+# Extract coefficients at best lambda
+coefs <- coef(ridge_model, s = best_lambda)
+
+# Convert to a data frame and remove the intercept
+coef_df <- as.data.frame(as.matrix(coefs))
+colnames(coef_df) <- "coefficient"
+coef_df$feature <- rownames(coef_df)
+coef_df <- coef_df[coef_df$feature != "(Intercept)", ]
+
+# Add absolute value and rank by importance
+coef_df$abs_coefficient <- abs(coef_df$coefficient)
+coef_df <- coef_df[order(coef_df$abs_coefficient, decreasing = TRUE), ]
+coef_df$rank <- seq(1, nrow(coef_df))
+
+# Print full ranked table
+print(coef_df)
+
+# Find specifically where age ranks
+age_rank <- coef_df[grep("age|Age", coef_df$feature, ignore.case = TRUE), 
+                    c("feature", "coefficient", "abs_coefficient", "rank")]
+print(age_rank)
+
+# Total number of features
+cat("Total number of features:", nrow(coef_df), "\n")
+cat("Age rank:", age_rank$rank, "out of", nrow(coef_df), "\n")
+
 # Predicted probabilities (raw)
 y_prob <- predict(ridge_model, newx = x_scaled, s = best_lambda, type = "response")
 

@@ -38,5 +38,6 @@ custom_feature_names = {
     'Microscopy_1': 'Positive Microscopy',
     'prevalence_0': 'Prevalence: Reside in District with Prevalence < 10%',
     'prevalence_1': 'Prevalence: Reside in District with Prevalence < 20% and > 10%',
-    'prevalence_2': 'Prevalence: Reside in District with Prevalence >20%'
+    'prevalence_2': 'Prevalence: Reside in District with Prevalence >20%',
+    'prevalence_NA': 'Prevalence: Missing'
 }

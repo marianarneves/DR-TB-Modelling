@@ -82,7 +82,7 @@
 |   |   |   |   |   |--- Urban: Urban area >  0.50
 |   |   |   |   |   |   |--- class: 0
 |--- TB Type: Treatment failure >  0.50
-|   |--- prevalence_NA <= 0.50
+|   |--- Prevalence: Missing <= 0.50
 |   |   |--- class: 1
-|   |--- prevalence_NA >  0.50
+|   |--- Prevalence: Missing >  0.50
 |   |   |--- class: 0
