@@ -779,7 +779,7 @@ global_var_imp_combined_plot_SMDM <- DT_global_var_importance_plot_SMDM +
 ggsave('global_var_imp_combined_plot_SMDM.png', global_var_imp_combined_plot_SMDM, width = 14, height = 4, dpi = 300)
 
 
-test =  (accuracy_plot_SMDM  + 
+all_comparison =  (accuracy_plot_SMDM  + 
   rulefit_global_var_importance_plot_SMDM +
   mcc_plot_SMDM + DT_global_var_importance_plot_SMDM +
   plot_layout(nrow =2, ncol = 2, guides = "collect") +
@@ -800,3 +800,76 @@ test =  (accuracy_plot_SMDM  +
     legend.text = element_text(size = 11)  # optional: slightly bigger legend labels
   )
 
+
+# Modified version for SMDM poster
+
+
+DT_global_var_importance_plot_SMDM_mod = ggplot(DT_factor_table_top,
+                                            aes(x = rel_importance,
+                                                y = fct_reorder(variable, rel_importance),
+                                                fill = rel_importance)) +
+  geom_col(width = 0.7) +
+  scale_fill_gradient(low = "#FDEBD0", high = "#E67E22", guide = "none") +
+  labs(
+    title = "Decision Tree Surrogate",
+    x = "Explanations identifying variable as top-ranked (%)",
+    y = NULL
+  ) +
+  scale_x_continuous(
+    limits = c(0, 0.4),
+    breaks = seq(0, 0.4, by = 0.05),
+    labels = scales::percent_format(accuracy = 1),
+    expand = c(0, 0)
+  )+
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0, size = 14),
+    axis.text.y = element_text(size = 12,  face = "bold"),
+    axis.text.x = element_text(size = 12),
+    axis.title.x = element_text(size = 14, face = "bold"),               # x-axis label size
+    axis.title.y = element_text(size = 14, face = "bold"),  
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_line(color = "grey80", linetype = "dashed")
+  )
+
+
+rulefit_global_var_importance_plot_SMDM_mod = ggplot(RuleFit_factor_table_top,
+                                                 aes(x = rel_importance,
+                                                     y = forcats::fct_reorder(factor, rel_importance),
+                                                     fill = rel_importance)) +
+  geom_col(width = 0.7) +
+  scale_fill_gradient(low = "#bdd7e7", high = "#6baed6", guide = "none") +
+  labs(
+    title = "Logistic Regression Surrogate",
+    x = "Explanations identifying variable as top-ranked (%)",
+    y = NULL
+  ) +
+  scale_x_continuous(
+    limits = c(0, 0.4),
+    breaks = seq(0, 0.4, by = 0.05),
+    labels = scales::percent_format(accuracy = 1),
+    expand = c(0, 0)
+  )+
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0, size = 14),
+    axis.text.y = element_text(size = 12,  face = "bold"),
+    axis.text.x = element_text(size = 12),
+    axis.title.x = element_text(size = 14, face = "bold"),               # x-axis label size
+    axis.title.y = element_text(size = 14, face = "bold"),  
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_line(color = "grey80", linetype = "dashed")
+  )
+
+var_importance_only =  (  rulefit_global_var_importance_plot_SMDM_mod +
+                          DT_global_var_importance_plot_SMDM_mod +
+                          plot_layout(nrow = 1, ncol = 2, guides = "collect") 
+                         
+)&
+  theme(
+    legend.position = "right",
+    legend.title = element_text(face = "bold", size = 12, color = "black"),  # bold + size
+    legend.text = element_text(size = 11)  # optional: slightly bigger legend labels
+  )
