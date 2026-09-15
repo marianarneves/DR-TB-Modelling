@@ -817,7 +817,7 @@ p_pidem <- ggplot(
   labs(
     x     = "Patient Characteristic",
     y     = "Normalized Frequency",
-    title = "ML-Assisted Decision Model\nExplanation Framework"
+    title = "ML-Assisted Decision Model\nDecomposition"
   ) +
   publication_theme
 
